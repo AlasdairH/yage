@@ -9,6 +9,10 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release_Benchmark|x64 = Release_Benchmark|x64
+		Release_Benchmark|x86 = Release_Benchmark|x86
+		Release_Logging|x64 = Release_Logging|x64
+		Release_Logging|x86 = Release_Logging|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
@@ -17,6 +21,14 @@ Global
 		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Debug|x64.Build.0 = Debug|x64
 		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Debug|x86.ActiveCfg = Debug|Win32
 		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Debug|x86.Build.0 = Debug|Win32
+		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Release_Benchmark|x64.ActiveCfg = Release_Benchmark|x64
+		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Release_Benchmark|x64.Build.0 = Release_Benchmark|x64
+		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Release_Benchmark|x86.ActiveCfg = Release_Benchmark|Win32
+		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Release_Benchmark|x86.Build.0 = Release_Benchmark|Win32
+		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Release_Logging|x64.ActiveCfg = Release_Logging|x64
+		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Release_Logging|x64.Build.0 = Release_Logging|x64
+		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Release_Logging|x86.ActiveCfg = Release_Logging|Win32
+		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Release_Logging|x86.Build.0 = Release_Logging|Win32
 		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Release|x64.ActiveCfg = Release|x64
 		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Release|x64.Build.0 = Release|x64
 		{E76C3F0D-86F2-490C-AC06-2261098420CC}.Release|x86.ActiveCfg = Release|Win32
