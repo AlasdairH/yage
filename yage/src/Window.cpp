@@ -6,7 +6,7 @@ namespace YAGE
 	bool Window::m_initialisedSDL = false;
 	bool Window::m_initialisedOpenGL = false;
 
-	Window::Window(const std::string &_title = "YAGE")
+	Window::Window(const std::string &_title)
 	{
 		if (!m_initialisedSDL)
 		{

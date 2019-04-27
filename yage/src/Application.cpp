@@ -5,6 +5,7 @@
 // program
 #include "PCH.h"
 #include "Window.h"
+#include "IOUtilities.h"
 
 #undef main
 
@@ -31,5 +32,7 @@ int main()
 	LOG(LOG_DEBUG) << "Main loop ended";
 
 	Log::toFile("log.txt");
+	std::string log = IOUtilities::loadText("log.txt");
+	LOG(LOG_DEBUG) << log;
 	return 0;
 }
