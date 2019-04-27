@@ -57,6 +57,7 @@ namespace YAGE
 		else
 		{
 			file << m_logHistory.str();
+			m_logHistory.clear();
 		}
 		file.close();
 
