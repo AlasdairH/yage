@@ -7,9 +7,17 @@
 
 #undef main
 
+using namespace YAGE;
+
 int main()
 {
-	std::cout << "Hello World" << std::endl;
+	LOG(LOG_ERROR) << "Test";
+
+	bool run = true;
+	while (run)
+	{
+		
+	}
 
 	return 0;
 }
