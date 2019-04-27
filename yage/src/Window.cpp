@@ -6,7 +6,7 @@ namespace YAGE
 	bool Window::m_initialisedSDL = false;
 	bool Window::m_initialisedOpenGL = false;
 
-	Window::Window()
+	Window::Window(const std::string &_title = "YAGE")
 	{
 		if (!m_initialisedSDL)
 		{
@@ -30,6 +30,7 @@ namespace YAGE
 			SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
 			SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 1);
 
+			m_initialisedSDL = true;
 			LOG(LOG_DEBUG) << "SDL successfully initialised";
 		}
 

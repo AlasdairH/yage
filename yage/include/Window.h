@@ -11,7 +11,14 @@ namespace YAGE
 	class Window
 	{
 	public:
-		Window();
+		/** @brief Initialises SDL and OpenGL if required and creates a window
+		*	@param _title The Window Title that will be displayed in the OS
+		*
+		*	The constructor takes default arguments for a standard window but title, width and height can be set
+		*	by overwriting these provided values.
+		*	The constructor creates an SDL Window, SDL Renderer and an accompanying GL Context.
+		*/
+		Window(const std::string &_title = "YAGE");
 		~Window();
 
 	protected:
