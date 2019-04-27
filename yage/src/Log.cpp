@@ -6,7 +6,7 @@ namespace YAGE
 #ifdef COMPILE_INCLUDE_LOGGING
 	LogLevel Log::reportingLevel = LOG_DEBUG;
 #else
-	LogLebel Log::reportingLEvel = LOG_WARNING;
+	LogLevel Log::reportingLevel = LOG_WARNING;
 #endif
 
 	Log::~Log()
