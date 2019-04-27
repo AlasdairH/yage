@@ -1,0 +1,3 @@
+2019-04-27 19:32:36:DEBUG(main:14): Test Debug
+2019-04-27 19:32:36:WARNING(main:15): Test Warning
+2019-04-27 19:32:36:ERROR(main:16): Test Error

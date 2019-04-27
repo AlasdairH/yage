@@ -20,10 +20,13 @@ namespace YAGE
 		~Log();
 
 		std::ostringstream & getBuffer(const LogLevel &_logLevel);
+		static void toFile(const std::string  &_file);
 
 		static LogLevel reportingLevel;
 	protected:
 		std::ostringstream m_oStream;
+
+		static std::ostringstream m_logHistory;
 
 	};
 }
