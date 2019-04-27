@@ -4,6 +4,7 @@
 
 // program
 #include "PCH.h"
+#include "Window.h"
 
 #undef main
 
@@ -11,17 +12,24 @@ using namespace YAGE;
 
 int main()
 {
-	LOG(LOG_DEBUG) << "Test Debug";
-	LOG(LOG_WARNING) << "Test Warning";
-	LOG(LOG_ERROR) << "Test Error";
+	Window window;
 
-	Log::toFile("log.txt");
-
+	LOG(LOG_DEBUG) << "Starting main loop";
 	bool run = true;
 	while (run)
 	{
-		
+		SDL_Event incomingEvent;
+		while (SDL_PollEvent(&incomingEvent))
+		{
+			if (incomingEvent.type == SDL_QUIT)
+			{
+				LOG(LOG_DEBUG) << "SDL_QUIT event called";
+				run = false;
+			}
+		}
 	}
+	LOG(LOG_DEBUG) << "Main loop ended";
 
+	Log::toFile("log.txt");
 	return 0;
 }

@@ -10,12 +10,12 @@ namespace YAGE
 	{
 		if (!m_initialisedSDL)
 		{
-			//CONSOLE_MESSAGE("Initialising SDL");
+			LOG(LOG_DEBUG) << "Starting SDL initilisation";
 			// attempt to initialise openGL
-			if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK) < 0)
+			if (SDL_Init(SDL_INIT_VIDEO) < 0)
 			{
-				// something went wrong, exit program
-				//CONSOLE_ERROR("Unable to Initialise SDL");
+				LOG(LOG_ERROR) << "Unable to initialise SDL";
+				return;
 			}
 
 			// set OpenGL 4.3
@@ -30,8 +30,20 @@ namespace YAGE
 			SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
 			SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 1);
 
-			//CONSOLE_MESSAGE("SDL Initialised");
+			LOG(LOG_DEBUG) << "SDL successfully initialised";
 		}
+
+		LOG(LOG_DEBUG) << "Creating window";
+
+		m_window = SDL_CreateWindow("YAGE",
+			50, 50,
+			1280, 720,
+			SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
+
+		m_renderer = SDL_CreateRenderer(m_window, -1, 0);
+		m_openGLContext = SDL_GL_CreateContext(m_window);
+
+		LOG(LOG_DEBUG) << "Window created successfully";
 	}
 
 	Window::~Window()

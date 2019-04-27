@@ -1,3 +1,7 @@
-2019-04-27 19:32:36:DEBUG(main:14): Test Debug
-2019-04-27 19:32:36:WARNING(main:15): Test Warning
-2019-04-27 19:32:36:ERROR(main:16): Test Error
+2019-04-27 20:01:59:DEBUG(Window:13): Starting SDL initilisation
+2019-04-27 20:01:59:DEBUG(Window:33): SDL successfully initialised
+2019-04-27 20:01:59:DEBUG(Window:36): Creating window
+2019-04-27 20:02:00:DEBUG(Window:46): Window created successfully
+2019-04-27 20:02:00:DEBUG(main:17): Starting main loop
+2019-04-27 20:02:02:DEBUG(main:26): SDL_QUIT event called
+2019-04-27 20:02:02:DEBUG(main:31): Main loop ended
