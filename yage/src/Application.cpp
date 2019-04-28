@@ -14,6 +14,11 @@ using namespace YAGE;
 int main()
 {
 	Window window;
+	if (!window.isOpen())
+	{
+		LOG(LOG_ERROR) << "Something went wrong opening SDL window, program closing";
+		return 1;
+	}
 
 	LOG(LOG_DEBUG) << "Starting main loop";
 	bool run = true;
@@ -32,7 +37,5 @@ int main()
 	LOG(LOG_DEBUG) << "Main loop ended";
 
 	Log::toFile("log.txt");
-	std::string log = IOUtilities::loadText("log.txt");
-	LOG(LOG_DEBUG) << log;
 	return 0;
 }

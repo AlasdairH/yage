@@ -1,7 +1,9 @@
-2019-04-27 20:34:52:DEBUG(Window:13): Starting SDL initilisation
-2019-04-27 20:34:52:DEBUG(Window:34): SDL successfully initialised
-2019-04-27 20:34:52:DEBUG(Window:37): Creating window
-2019-04-27 20:34:52:DEBUG(Window:47): Window created successfully
-2019-04-27 20:34:52:DEBUG(main:18): Starting main loop
-2019-04-27 20:34:57:DEBUG(main:27): SDL_QUIT event called
-2019-04-27 20:34:57:DEBUG(main:32): Main loop ended
+2019-04-28 09:36:35:DEBUG(Window:13): Starting SDL initilisation
+2019-04-28 09:36:35:DEBUG(Window:34): SDL successfully initialised
+2019-04-28 09:36:35:DEBUG(Window:37): Creating window
+2019-04-28 09:36:36:DEBUG(Window:47): Window created successfully
+2019-04-28 09:36:36:DEBUG(Window:51): Starting GLEW initialisation
+2019-04-28 09:36:36:DEBUG(Window:61): GLEW successfully initialised
+2019-04-28 09:36:36:DEBUG(main:23): Starting main loop
+2019-04-28 09:36:46:DEBUG(main:32): SDL_QUIT event called
+2019-04-28 09:36:46:DEBUG(main:37): Main loop ended

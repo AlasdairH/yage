@@ -44,22 +44,11 @@ namespace YAGE
 		return m_oStream;
 	}
 
-	void Log::toFile(const std::string &_file)
+	void Log::toFile(const std::string &_filepath)
 	{
-		std::ofstream file;
-		file.open(_file, std::ofstream::out);
-		// check file opened correctly
-		if (!file.is_open())
-		{
-			LOG(LOG_ERROR) << "Failed to open file " << _file;
-			return;
-		}
-		else
-		{
-			file << m_logHistory.str();
-			m_logHistory.clear();
-		}
-		file.close();
+		
+		IOUtilities::saveText(_filepath, m_logHistory.str());
+		m_logHistory.clear();
 
 		return;
 	}

@@ -45,6 +45,23 @@ namespace YAGE
 		m_openGLContext = SDL_GL_CreateContext(m_window);
 
 		LOG(LOG_DEBUG) << "Window created successfully";
+
+		if (!m_initialisedOpenGL)
+		{
+			LOG(LOG_DEBUG) << "Starting GLEW initialisation";
+			//glewExperimental = GL_TRUE;
+
+			GLenum err = glewInit();
+			if (GLEW_OK != err)
+			{
+				LOG(LOG_ERROR) << "GLEW failed to initialise ";
+				return;
+			}
+
+			LOG(LOG_DEBUG) << "GLEW successfully initialised";
+		}
+
+		m_open = true;
 	}
 
 	Window::~Window()

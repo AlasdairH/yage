@@ -28,6 +28,8 @@ namespace YAGE
 		Window(const std::string &_title = "YAGE");
 		~Window();
 
+		inline bool isOpen() { return m_open; }
+
 	protected:
 		SDL_Window		*m_window;				/**< A pointer to the SDL_Window */
 		SDL_Renderer	*m_renderer;			/**< A pointer to the SDL_Renderer */
@@ -35,6 +37,8 @@ namespace YAGE
 
 		glm::vec2		m_size;					/**< The size of the window in pixels */
 		glm::vec2		m_position;				/**< The position in screen space of the window */
+
+		bool			m_open = false;
 
 		static bool m_initialisedSDL;
 		static bool m_initialisedOpenGL;

@@ -4,6 +4,7 @@
 #include "PCH.h"
 
 // Program
+#include "IOUtilities.h"
 
 namespace YAGE
 {
@@ -20,7 +21,7 @@ namespace YAGE
 		~Log();
 
 		std::ostringstream & getBuffer(const LogLevel &_logLevel);
-		static void toFile(const std::string  &_file);
+		static void toFile(const std::string  &_filepath);
 
 		static LogLevel reportingLevel;
 	protected:

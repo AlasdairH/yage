@@ -1,5 +1,6 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
+#define GLEW_STATIC
 
 // STL
 #include <iostream>
@@ -13,6 +14,7 @@
 
 // External
 #include <SDL/SDL.h>
+#include <GL/glew.h>
 #include <GLM/glm.hpp>
 
 // Program
