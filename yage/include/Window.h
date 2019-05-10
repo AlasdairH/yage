@@ -38,9 +38,9 @@ namespace YAGE
 		glm::vec2		m_size;					/**< The size of the window in pixels */
 		glm::vec2		m_position;				/**< The position in screen space of the window */
 
-		bool			m_open = false;
+		bool			m_open = false;			/**< Whether the window is open */
 
-		static bool m_initialisedSDL;
-		static bool m_initialisedOpenGL;
+		static bool m_initialisedSDL;			/**< A flag stating whether SDL is initialised */
+		static bool m_initialisedOpenGL;		/**< A flag stating whether GLEW is initialised */
 	};
 }
