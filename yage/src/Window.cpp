@@ -18,19 +18,6 @@ namespace YAGE
 				return;
 			}
 
-			// set OpenGL 4.3
-			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
-			SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
-
-			SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-
-			// set attributes
-			SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
-			SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-			SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-			SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 1);
-
-			m_initialisedSDL = true;
 			LOG(LOG_DEBUG) << "SDL successfully initialised";
 		}
 
@@ -42,24 +29,8 @@ namespace YAGE
 			SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);
 
 		m_renderer = SDL_CreateRenderer(m_window, -1, 0);
-		m_openGLContext = SDL_GL_CreateContext(m_window);
 
 		LOG(LOG_DEBUG) << "Window created successfully";
-
-		if (!m_initialisedOpenGL)
-		{
-			LOG(LOG_DEBUG) << "Starting GLEW initialisation";
-			//glewExperimental = GL_TRUE;
-
-			GLenum err = glewInit();
-			if (GLEW_OK != err)
-			{
-				LOG(LOG_ERROR) << "GLEW failed to initialise ";
-				return;
-			}
-
-			LOG(LOG_DEBUG) << "GLEW successfully initialised";
-		}
 
 		m_open = true;
 	}

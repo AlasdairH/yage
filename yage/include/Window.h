@@ -5,7 +5,6 @@
 
 // Program
 
-
 namespace YAGE
 {
 	/*! @class Window
@@ -30,17 +29,19 @@ namespace YAGE
 
 		inline bool isOpen() { return m_open; }
 
+		SDL_Window * getSDLWindow() { return m_window; }
+		SDL_Window * setWindow() { return m_window; }
+
 	protected:
 		SDL_Window		*m_window;				/**< A pointer to the SDL_Window */
 		SDL_Renderer	*m_renderer;			/**< A pointer to the SDL_Renderer */
-		SDL_GLContext	 m_openGLContext;		/**< The GL Context for OpenGL Rendering */
 
 		glm::vec2		m_size;					/**< The size of the window in pixels */
 		glm::vec2		m_position;				/**< The position in screen space of the window */
 
 		bool			m_open = false;			/**< Whether the window is open */
 
-		static bool m_initialisedSDL;			/**< A flag stating whether SDL is initialised */
-		static bool m_initialisedOpenGL;		/**< A flag stating whether GLEW is initialised */
+		static bool		m_initialisedSDL;			/**< A flag stating whether SDL is initialised */
+		static bool		m_initialisedOpenGL;		/**< A flag stating whether GLEW is initialised */
 	};
 }

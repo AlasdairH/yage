@@ -13,12 +13,16 @@ using namespace YAGE;
 
 int main()
 {
+	
 	Window window;
 	if (!window.isOpen())
 	{
 		LOG(LOG_ERROR) << "Something went wrong opening SDL window, program closing";
 		return 1;
 	}
+	OpenGLContext context(std::make_shared<Window>(window));
+
+	glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
 
 	LOG(LOG_DEBUG) << "Starting main loop";
 	bool run = true;
@@ -33,6 +37,9 @@ int main()
 				run = false;
 			}
 		}
+
+		glClear(GL_COLOR_BUFFER_BIT);
+
 	}
 	LOG(LOG_DEBUG) << "Main loop ended";
 

@@ -18,4 +18,6 @@
 #include <GLM/glm.hpp>
 
 // Program
+#include "CompileSettings.h"
 #include "Log.h"
+#include "GraphicsContext_OpenGL.h"

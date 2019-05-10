@@ -1,9 +1,10 @@
-2019-04-28 09:36:35:DEBUG(Window:13): Starting SDL initilisation
-2019-04-28 09:36:35:DEBUG(Window:34): SDL successfully initialised
-2019-04-28 09:36:35:DEBUG(Window:37): Creating window
-2019-04-28 09:36:36:DEBUG(Window:47): Window created successfully
-2019-04-28 09:36:36:DEBUG(Window:51): Starting GLEW initialisation
-2019-04-28 09:36:36:DEBUG(Window:61): GLEW successfully initialised
-2019-04-28 09:36:36:DEBUG(main:23): Starting main loop
-2019-04-28 09:36:46:DEBUG(main:32): SDL_QUIT event called
-2019-04-28 09:36:46:DEBUG(main:37): Main loop ended
+2019-05-10 18:34:52:DEBUG(Window:13): Starting SDL initilisation
+2019-05-10 18:34:52:DEBUG(Window:21): SDL successfully initialised
+2019-05-10 18:34:52:DEBUG(Window:24): Creating window
+2019-05-10 18:34:53:DEBUG(Window:33): Window created successfully
+2019-05-10 18:34:53:DEBUG(OpenGLContext:12): Starting GLEW initialisation
+2019-05-10 18:34:53:DEBUG(OpenGLContext:22): GLEW successfully initialised
+2019-05-10 18:34:53:DEBUG(OpenGLContext:36): Set SDL_GL settings
+2019-05-10 18:34:53:DEBUG(main:25): Starting main loop
+2019-05-10 18:34:56:DEBUG(main:34): SDL_QUIT event called
+2019-05-10 18:34:56:DEBUG(main:43): Main loop ended
