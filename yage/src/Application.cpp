@@ -6,6 +6,7 @@
 #include "PCH.h"
 #include "Window.h"
 #include "IOUtilities.h"
+#include "GL_Shader.h"
 
 #undef main
 
@@ -13,7 +14,6 @@ using namespace YAGE;
 
 int main()
 {
-	
 	Window window;
 	if (!window.isOpen())
 	{
@@ -22,7 +22,14 @@ int main()
 	}
 	OpenGLContext context(std::make_shared<Window>(window));
 
-	glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+	Shader testShader;
+	testShader.load("resources/shaders/basic.glsl");
+	testShader.complete();
+	Shader testShader2;
+	testShader2.load("resources/shaders/basic.glsl");
+	testShader2.complete();
+
+	glClearColor(0.97f, 0.16f, 0.58f, 1.0f);
 
 	LOG(LOG_DEBUG) << "Starting main loop";
 	bool run = true;
@@ -40,6 +47,7 @@ int main()
 
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		context.swapBuffer();
 	}
 	LOG(LOG_DEBUG) << "Main loop ended";
 

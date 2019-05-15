@@ -1,10 +1,14 @@
-2019-05-10 18:34:52:DEBUG(Window:13): Starting SDL initilisation
-2019-05-10 18:34:52:DEBUG(Window:21): SDL successfully initialised
-2019-05-10 18:34:52:DEBUG(Window:24): Creating window
-2019-05-10 18:34:53:DEBUG(Window:33): Window created successfully
-2019-05-10 18:34:53:DEBUG(OpenGLContext:12): Starting GLEW initialisation
-2019-05-10 18:34:53:DEBUG(OpenGLContext:22): GLEW successfully initialised
-2019-05-10 18:34:53:DEBUG(OpenGLContext:36): Set SDL_GL settings
-2019-05-10 18:34:53:DEBUG(main:25): Starting main loop
-2019-05-10 18:34:56:DEBUG(main:34): SDL_QUIT event called
-2019-05-10 18:34:56:DEBUG(main:43): Main loop ended
+2019-05-15 14:30:11:DEBUG(Window:13): Starting SDL initilisation
+2019-05-15 14:30:11:DEBUG(Window:21): SDL successfully initialised
+2019-05-15 14:30:11:DEBUG(Window:24): Creating window
+2019-05-15 14:30:12:DEBUG(Window:33): Window created successfully
+2019-05-15 14:30:12:DEBUG(OpenGLContext:12): Starting GLEW initialisation
+2019-05-15 14:30:12:DEBUG(OpenGLContext:22): GLEW successfully initialised
+2019-05-15 14:30:12:DEBUG(OpenGLContext:36): Set SDL_GL settings
+2019-05-15 14:30:12:DEBUG(create:140): Created shader program 1
+2019-05-15 14:30:12:DEBUG(attach:104): Shader 2 with type 35633 successfully attached to program 1
+2019-05-15 14:30:12:DEBUG(attach:104): Shader 3 with type 35632 successfully attached to program 1
+2019-05-15 14:30:12:DEBUG(complete:127): Shader Program 1 successfully linked
+2019-05-15 14:30:12:DEBUG(main:31): Starting main loop
+2019-05-15 14:30:16:DEBUG(main:40): SDL_QUIT event called
+2019-05-15 14:30:16:DEBUG(main:49): Main loop ended
