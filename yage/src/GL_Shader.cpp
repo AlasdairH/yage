@@ -38,6 +38,7 @@ namespace YAGE
 		int lineNumber = 0;
 		for (const std::string &line : fileLines)
 		{
+			// if the line is the start of a vertex shader
 			if (line == "[[VERTEX]]")
 			{
 				// if there is already a shader being written, attach it to the program
@@ -46,9 +47,11 @@ namespace YAGE
 					attach(currentShaderText, currentShaderType);
 				}
 
+				// clear the shader text and set the new shader type
 				currentShaderText.clear();
 				currentShaderType = SHADER_SOURCE_VERTEX;
 			}
+			// if the line is the start of a fragment shader
 			else if (line == "[[FRAGMENT]]")
 			{
 				// if there is already a shader being written, attach it to the program
@@ -57,9 +60,11 @@ namespace YAGE
 					attach(currentShaderText, currentShaderType);
 				}
 
+				// clear the shader text and set the new shader type
 				currentShaderText.clear();
 				currentShaderType = SHADER_SOURCE_FRAGMENT;
 			}
+			// if the line is to be added to the shader
 			else
 			{
 				currentShaderText.append(line + '\n');
