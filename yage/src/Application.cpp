@@ -51,6 +51,7 @@ int main()
 	}
 	LOG(LOG_DEBUG) << "Main loop ended";
 
+	LOG(LOG_MESSAGE) << "Debug: " << Log::getLogCount(LOG_DEBUG) << " | Warning: " << Log::getLogCount(LOG_WARNING) << " | Error: " << Log::getLogCount(LOG_ERROR);
 	Log::toFile("log.txt");
 	return 0;
 }

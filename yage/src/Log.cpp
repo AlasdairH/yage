@@ -13,6 +13,7 @@ namespace YAGE
 	unsigned int Log::m_numDebug = 0;
 	unsigned int Log::m_numWarning = 0;
 	unsigned int Log::m_numError = 0;
+	unsigned int Log::m_numMessage = 0;
 
 	Log::~Log()
 	{
@@ -44,6 +45,11 @@ namespace YAGE
 			m_oStream << ":ERROR";
 			++m_numError;
 		}
+		else if (_logLevel == LOG_MESSAGE)
+		{
+			m_oStream << ":MESSAGE";
+			++m_numError;
+		}
 		else
 		{
 			m_oStream << ":UNKNOWN";
@@ -58,5 +64,25 @@ namespace YAGE
 		m_logHistory.clear();
 
 		return;
+	}
+	unsigned int Log::getLogCount(const LogLevel& _logLevel)
+	{
+		switch (_logLevel)
+		{
+		case LOG_DEBUG:
+			return m_numDebug;
+			break;
+		case LOG_WARNING:
+			return m_numWarning;
+			break;
+		case LOG_ERROR:
+			return m_numError;
+			break;
+		case LOG_MESSAGE:
+			return m_numMessage;
+			break;
+		default:
+			return 0;
+		}
 	}
 }

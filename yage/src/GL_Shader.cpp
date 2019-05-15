@@ -70,7 +70,14 @@ namespace YAGE
 			// if at the end of the file
 			if (lineNumber == fileLines.size())
 			{
-				attach(currentShaderText, currentShaderType);
+				if (currentShaderType == SHADER_SOURCE_UNKNOWN)
+				{
+					LOG(LOG_WARNING) << "Unable to load shader source from file: no shaders found";
+				}
+				else
+				{
+					attach(currentShaderText, currentShaderType);
+				}
 			}
 		}
 	}

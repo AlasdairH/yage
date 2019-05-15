@@ -41,7 +41,7 @@ namespace YAGE
 
 		bool			m_open = false;			/**< Whether the window is open */
 
-		static bool		m_initialisedSDL;			/**< A flag stating whether SDL is initialised */
-		static bool		m_initialisedOpenGL;		/**< A flag stating whether GLEW is initialised */
+		static bool		m_initialisedSDL;		/**< A flag stating whether SDL is initialised */
+		static bool		m_initialisedOpenGL;	/**< A flag stating whether GLEW is initialised */
 	};
 }
