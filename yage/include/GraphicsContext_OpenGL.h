@@ -9,7 +9,11 @@
 
 namespace YAGE
 {
-	class Window;
+	/*! @class OpenGLContext
+	*	@brief The OpenGL Graphics Context
+	*
+	*	Holds the OpenGL graphics context implementation
+	*/
 	class OpenGLContext : public GraphicsContext
 	{
 	public:

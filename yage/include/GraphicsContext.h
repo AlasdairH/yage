@@ -8,6 +8,12 @@
 
 namespace YAGE
 {
+	/*! @class GraphicsContext
+	*	@brief A base class for a graphics context (OpenGL, D3D, etc.)
+	*
+	*	This class provides the base functionality of a graphics context which must be overridden
+	*	with functionality from that context.
+	*/
 	class GraphicsContext
 	{
 	public:

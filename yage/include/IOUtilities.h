@@ -7,6 +7,11 @@
 
 namespace YAGE
 {
+	/*! @class IOUtilities
+	*	@brief Common and basic Input/Output functionality
+	*
+	*	Provides basic and common functions for loading and saving files
+	*/
 	class IOUtilities
 	{
 	public:

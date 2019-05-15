@@ -7,6 +7,11 @@
 
 namespace YAGE
 {
+	/*! @class ResBase
+	*	@brief A base class for resources which contains a tag and unique ID
+	*
+	*	Holds the resource name (which can be changed) and a unqiue ID (which cannot be changed) 
+	*/
 	class ResBase
 	{
 	public:

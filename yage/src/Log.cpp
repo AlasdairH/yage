@@ -10,6 +10,10 @@ namespace YAGE
 #endif
 	std::ostringstream Log::m_logHistory;
 
+	unsigned int Log::m_numDebug = 0;
+	unsigned int Log::m_numWarning = 0;
+	unsigned int Log::m_numError = 0;
+
 	Log::~Log()
 	{
 		std::string logString = m_oStream.str() + "\n";
@@ -28,14 +32,17 @@ namespace YAGE
 		if (_logLevel == LOG_DEBUG)
 		{
 			m_oStream << ":DEBUG";
+			++m_numDebug;
 		}
 		else if (_logLevel == LOG_WARNING)
 		{
 			m_oStream << ":WARNING";
+			++m_numWarning;
 		}
 		else if (_logLevel == LOG_ERROR)
 		{
 			m_oStream << ":ERROR";
+			++m_numError;
 		}
 		else
 		{

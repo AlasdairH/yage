@@ -8,6 +8,15 @@
 
 namespace YAGE
 {
+	/*! @class Shader
+	*	@brief An OpenGL Shader Program
+	*
+	*	This class contains the methods and data for loading files into a shader source
+	*	to then be compiled and linked. Any text file can be loaded and parsed with the following
+	*	commands:
+	*	[[VERTEX]] - All after this line is a vertex shader
+	*	[[FRAGMENT]] - All after this line is a fragment shader
+	*/
 	class Shader : public GL_Base
 	{
 	public:
