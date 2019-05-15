@@ -29,13 +29,13 @@ namespace YAGE
 	protected:
 		enum ShaderSourceType { SHADER_SOURCE_UNKNOWN, 
 			SHADER_SOURCE_VERTEX =		GL_VERTEX_SHADER, 
-			SHADER_SOURCE_FRAGMENT =	GL_FRAGMENT_SHADER };
+			SHADER_SOURCE_FRAGMENT =	GL_FRAGMENT_SHADER };					/**< enum for representing different source shader types */
 
 		void create();
 		void attach(const std::string& _source, const ShaderSourceType &_type);
 
-		bool m_linked = false;
+		bool m_linked = false;													/**< Flag showing the compelte state of the shader */
 
-		std::vector<std::pair<unsigned int, ShaderSourceType>> m_attached;
+		std::vector<std::pair<unsigned int, ShaderSourceType>> m_attached;		/**< A vector containing the source shader IDs */
 	};
 }

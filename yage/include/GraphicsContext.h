@@ -23,7 +23,7 @@ namespace YAGE
 		virtual void swapBuffer() { }
 
 	protected:
-		std::shared_ptr<Window>		m_targetWindow;
-		bool						m_valid;
+		std::shared_ptr<Window>		m_targetWindow;		/**< The window which to create the context for */
+		bool						m_valid;			/**< Whether the context is valid (initialised sucessfully) */
 	};
 }

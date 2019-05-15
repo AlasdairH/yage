@@ -23,7 +23,7 @@ namespace YAGE
 		inline unsigned int getGlID() { return m_glID; }
 
 	protected:
-		unsigned int	m_glID = 0;
-		GL_BaseType		m_glType = GL_TYPE_UNKNOWN;
+		unsigned int	m_glID = 0;						/**< A unique ID set in the derived constructor */
+		GL_BaseType		m_glType = GL_TYPE_UNKNOWN;		/**< The type of OpenGL resource */
 	};
 }
