@@ -7,6 +7,9 @@
 #include "Window.h"
 #include "IOUtilities.h"
 #include "GL_Shader.h"
+#include "GL_VertexArray.h"
+#include "GL_VertexBuffer.h"
+#include "GL_VertexBufferLayout.h"
 
 #undef main
 
@@ -22,12 +25,22 @@ int main()
 	}
 	OpenGLContext context(std::make_shared<Window>(window));
 
-	Shader testShader;
-	testShader.load("resources/shaders/basic.glsl");
-	testShader.complete();
-	Shader testShader2;
-	testShader2.load("resources/shaders/basic.glsl");
-	testShader2.complete();
+	Shader shader;
+	shader.load("resources/shaders/basic.glsl");
+	shader.complete();
+
+	float vertices[] = {
+		-0.5f, -0.5f, 0.0f,
+		    0,  0.5f, 0.0f,
+		 0.5f, -1.0f, 0.0f
+	};
+
+	VertexBuffer vbo(BUFFER_ARRAY);
+	VertexBufferLayout layout;
+	vbo.loadData(vertices);
+	layout.push<float>(3);
+	VertexArray vao;
+	vao.addBuffer(vbo, layout);
 
 	glClearColor(0.97f, 0.16f, 0.58f, 1.0f);
 
@@ -46,6 +59,10 @@ int main()
 		}
 
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		vao.bind();
+		vbo.bind();
+		//shader.
 
 		context.swapBuffer();
 	}

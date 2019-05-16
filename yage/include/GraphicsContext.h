@@ -24,6 +24,6 @@ namespace YAGE
 
 	protected:
 		std::shared_ptr<Window>		m_targetWindow;		/**< The window which to create the context for */
-		bool						m_valid;			/**< Whether the context is valid (initialised sucessfully) */
+		bool						m_valid = false;	/**< Whether the context is valid (initialised sucessfully) */
 	};
 }
