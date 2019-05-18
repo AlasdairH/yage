@@ -19,6 +19,8 @@ namespace YAGE
 	*/
 	class Shader : public GL_Base
 	{
+	friend class ShaderModifier;
+
 	public:
 		Shader();
 		~Shader();
@@ -27,8 +29,9 @@ namespace YAGE
 		bool complete();
 
 		void bind() { glUseProgram(m_glID); }
-		
 		static void unbind();
+
+		int getAttributeLocation(const std::string& _attribute);
 
 	protected:
 		enum ShaderSourceType { SHADER_SOURCE_UNKNOWN, 
@@ -41,5 +44,7 @@ namespace YAGE
 		bool m_linked = false;													/**< Flag showing the compelte state of the shader */
 
 		std::vector<std::pair<unsigned int, ShaderSourceType>> m_attached;		/**< A vector containing the source shader IDs */
+
+		std::unordered_map<std::string, unsigned int> m_uniformLocationCache;	/**< The cache of uniform names to locations */
 	};
 }

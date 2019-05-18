@@ -146,6 +146,26 @@ namespace YAGE
 		return true;
 	}
 
+	int Shader::getAttributeLocation(const std::string &_attribute)
+	{
+		// if the uniform is in the cache, just return that
+		if (m_uniformLocationCache.find(_attribute) != m_uniformLocationCache.end())
+			return m_uniformLocationCache[_attribute];
+
+		// else, lets go looking for it
+		int location = glGetAttribLocation(m_glID, _attribute.c_str());
+		if (location == -1)
+		{
+			LOG(LOG_WARNING) << "Attribute name " << _attribute << " does not exist!";
+			return -1;
+		}
+
+		// update the cache
+		m_uniformLocationCache[_attribute] = location;
+
+		return location;
+	}
+
 	void Shader::create()
 	{
 		m_glID = glCreateProgram();

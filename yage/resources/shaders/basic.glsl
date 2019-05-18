@@ -9,9 +9,12 @@ void main()
 
 [[FRAGMENT]]
 #version 430 core
+
+uniform vec4 u_colour = vec4(0.97f, 0.16f, 0.58f, 1.0f);
+
 out vec4 fragColour;
 
 void main()
 {
-    fragColour = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+    fragColour = u_colour;
 }

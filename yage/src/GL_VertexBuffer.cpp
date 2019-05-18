@@ -26,6 +26,7 @@ namespace YAGE
 	{
 		bind();
 		glBufferData(m_vertexBufferType, _size, NULL, m_usage);
+		m_bufferSize = _size;
 	}
 
 	void VertexBuffer::loadData(const void *_data, unsigned int _count, unsigned int _size)
@@ -33,23 +34,35 @@ namespace YAGE
 		m_count = _count;
 		bind();
 		glBufferData(m_vertexBufferType, _size, _data, m_usage);
+		m_bufferSize = _size;
+		m_dataEndPoint = _size;
 	}
 	void VertexBuffer::loadData(const void *_data, unsigned int _size)
 	{
 		m_count = -1;
 		bind();
 		glBufferData(m_vertexBufferType, _size, _data, m_usage);
-	}	
-	void VertexBuffer::loadData(const void *_data)
-	{
-		m_count = -1;
-		bind();
-		glBufferData(m_vertexBufferType, sizeof(_data), _data, m_usage);
+		m_bufferSize = _size;
+		m_dataEndPoint = _size;
 	}
 
-	void VertexBuffer::loadSubData(const void * _data, unsigned int _count, unsigned int _size, int _offset)
+	void VertexBuffer::loadSubData(const void * _data, unsigned int _size, int _offset)
 	{
+		// make sure the sub data fits inside the buffer
+		if (_offset + _size > m_bufferSize)
+		{
+			LOG(LOG_ERROR) << "Unable to load sub data as the size of the data extends over the size of the buffer. Consider allocating more space to the buffer";
+			return;
+		}
+
 		glBufferSubData(m_vertexBufferType, _offset, _size, _data);
+		if (_offset + _size > m_dataEndPoint)
+			m_dataEndPoint = _offset + _size;
+	}
+
+	void VertexBuffer::addData(const void *_data, unsigned int _size)
+	{
+		loadSubData(_data, _size, m_dataEndPoint);
 	}
 
 	void VertexBuffer::bind() const

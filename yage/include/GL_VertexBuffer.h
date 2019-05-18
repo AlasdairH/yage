@@ -68,22 +68,24 @@ namespace YAGE
 		*	Loads data to the VBO.
 		*/
 		void loadData(const void *_data, unsigned int _size);
-		/** @brief Loads data to the VBO.
-		*	@param _data he data to send to the VBO
-		*
-		*	Loads data to the VBO.
-		*/
-		void loadData(const void *_data);
 
 		/** @brief Loads data to the VBO.
 		*	@param _data he data to send to the VBO
-		*	@param _count The number of items of data
 		*	@param _size The size of the data in bytes
 		*	@param _offset The offset of where to start writing form
 		*
 		*	Loads data to the VBO at a set point and for a set size
 		*/
-		void loadSubData(const void * _data, unsigned int _count, unsigned int _size, int _offset);
+		void loadSubData(const void * _data, unsigned int _size, int _offset);
+
+		/** @brief Adds data to the VBO
+		*	@param _data he data to add to the VBO
+		*	@param _size The size of the data in bytes
+		*
+		*	Adds data to the VBO from the point of the last item of data. The loadSubData method will check to make sure
+		*	the data does not go over the bounds of the buffer.
+		*/
+		void addData(const void *_data, unsigned int _size);
 
 		/** @brief Returns the count of the number of items contained within the buffer.
 		*	@return The count
@@ -129,5 +131,8 @@ namespace YAGE
 		unsigned int		m_count = 0;							/**< The number of items of data there is in the buffer */
 
 		unsigned int		m_usage = GL_STATIC_DRAW;				/**< The usage pattern for the buffer */
+
+		unsigned int		m_bufferSize = 0;
+		unsigned int		m_dataEndPoint = 0;
 	};
 }

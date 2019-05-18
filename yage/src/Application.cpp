@@ -10,6 +10,7 @@
 #include "GL_VertexArray.h"
 #include "GL_VertexBuffer.h"
 #include "GL_VertexBufferLayout.h"
+#include "GL_ShaderModifier.h"
 
 #undef main
 
@@ -29,21 +30,27 @@ int main()
 	shader.load("resources/shaders/basic.glsl");
 	shader.complete();
 
-	float vertices[] = {
-	-0.5f, -0.5f, 0.0f,
-	 0.5f, -0.5f, 0.0f,
-	 0.0f,  0.5f, 0.0f
+	std::vector<float> verticesVector = {
+	-1.0f, -0.5f, 0.0f,
+	 0.0f, -0.5f, 0.0f,
+	-1.0f,  0.5f, 0.0f
 	};
-	int numVerticles = sizeof(vertices) / sizeof(float);
+	std::vector<float> verticesVector2 = {
+	0.0f, -0.5f, 0.0f,
+	1.0f, -0.5f, 0.0f,
+	0.0f,  0.5f, 0.0f
+	};
 
 	VertexBuffer vbo(BUFFER_ARRAY);
 	VertexBufferLayout layout;
 	layout.push<float>(3);
-	vbo.loadData(vertices, sizeof(vertices));
+	vbo.allocate(sizeof(float) * verticesVector.size() * 2);
+	vbo.addData(verticesVector.data(), sizeof(float) * verticesVector.size());
+	vbo.addData(verticesVector2.data(), sizeof(float) * verticesVector2.size());
 	VertexArray vao;
 	vao.addBuffer(vbo, layout);
 
-	glClearColor(0.97f, 0.16f, 0.58f, 1.0f);
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
 	LOG(LOG_DEBUG) << "Starting main loop";
 	bool run = true;
@@ -64,7 +71,10 @@ int main()
 		shader.bind();
 		vao.bind();
 
+		ShaderModifier::setUniform4f(shader.getAttributeLocation("u_colour"), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 		glDrawArrays(GL_TRIANGLES, 0, 3);
+		ShaderModifier::setUniform4f(shader.getAttributeLocation("u_colour"), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+		glDrawArrays(GL_TRIANGLES, 3, 3);
 
 		context.swapBuffer();
 	}

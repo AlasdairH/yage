@@ -12,6 +12,7 @@
 #include <iomanip> 
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 // External
 #include <SDL/SDL.h>
