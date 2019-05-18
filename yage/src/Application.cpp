@@ -27,6 +27,7 @@ int main()
 	OpenGLContext context(std::make_shared<Window>(window));
 
 	Shader shader;
+	shader.setTag("Test Shader");
 	shader.load("resources/shaders/basic.glsl");
 	shader.complete();
 
@@ -71,9 +72,9 @@ int main()
 		shader.bind();
 		vao.bind();
 
-		ShaderModifier::setUniform4f(shader.getAttributeLocation("u_colour"), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+		ShaderModifier::setUniform4f(shader.getUniformLocation("u_colour"), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 		glDrawArrays(GL_TRIANGLES, 0, 3);
-		ShaderModifier::setUniform4f(shader.getAttributeLocation("u_colour"), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+		ShaderModifier::setUniform4f(shader.getUniformLocation("u_colour"), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
 		glDrawArrays(GL_TRIANGLES, 3, 3);
 
 		context.swapBuffer();

@@ -31,7 +31,7 @@ namespace YAGE
 		void bind() { glUseProgram(m_glID); }
 		static void unbind();
 
-		int getAttributeLocation(const std::string& _attribute);
+		int getUniformLocation(const std::string& _uniform);
 
 	protected:
 		enum ShaderSourceType { SHADER_SOURCE_UNKNOWN, 
