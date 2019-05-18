@@ -30,15 +30,16 @@ int main()
 	shader.complete();
 
 	float vertices[] = {
-		-0.5f, -0.5f, 0.0f,
-		    0,  0.5f, 0.0f,
-		 0.5f, -1.0f, 0.0f
+	-0.5f, -0.5f, 0.0f,
+	 0.5f, -0.5f, 0.0f,
+	 0.0f,  0.5f, 0.0f
 	};
+	int numVerticles = sizeof(vertices) / sizeof(float);
 
 	VertexBuffer vbo(BUFFER_ARRAY);
 	VertexBufferLayout layout;
-	vbo.loadData(vertices);
 	layout.push<float>(3);
+	vbo.loadData(vertices, sizeof(vertices));
 	VertexArray vao;
 	vao.addBuffer(vbo, layout);
 
@@ -58,11 +59,12 @@ int main()
 			}
 		}
 
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+		shader.bind();
 		vao.bind();
-		vbo.bind();
-		//shader.
+
+		glDrawArrays(GL_TRIANGLES, 0, 3);
 
 		context.swapBuffer();
 	}
