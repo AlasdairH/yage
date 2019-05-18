@@ -17,7 +17,7 @@ namespace YAGE
 	public:
 		ResBase();
 		std::string getTag() { return m_tag; }
-		void setTag(const std::string &_newTag) { m_tag = _newTag; }
+		void setTag(const std::string& _newTag) { m_tag = _newTag; LOG(LOG_DEBUG) << "Set resource " << m_uID << " to tag " << m_tag; }
 
 	protected:
 		std::string m_tag = "Default Tag";	/**< The name of the resource */

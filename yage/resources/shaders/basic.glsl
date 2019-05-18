@@ -1,12 +1,10 @@
 [[VERTEX]]
 #version 430 core
-layout (location = 0) in vec3 buffer_position;
-layout (location = 1) in vec3 buffer_normal;
-layout (location = 2) in vec3 buffer_textureCoordinates;
+layout (location = 0) in vec3 buffer_pos;
 
 void main()
 {
-    gl_Position = vec4(buffer_position.xyz, 1.0);
+    gl_Position = vec4(buffer_pos.xyz, 1.0);
 }
 
 [[FRAGMENT]]
