@@ -11,6 +11,8 @@
 #include "GL_VertexBuffer.h"
 #include "GL_VertexBufferLayout.h"
 #include "GL_ShaderModifier.h"
+#include "Vertex.h"
+#include "Mesh.h"
 
 #undef main
 
@@ -26,30 +28,30 @@ int main()
 	}
 	OpenGLContext context(std::make_shared<Window>(window));
 
+	Mesh meshLeft;
+	meshLeft.setTag("Test Mesh Left");
+	meshLeft.addVertex({ glm::vec3(-1.0f, -0.5f, 0.0f), glm::vec3(0), glm::vec3(0) });
+	meshLeft.addVertex({ glm::vec3(0.0f, -0.5f, 0.0f), glm::vec3(0), glm::vec3(0) });
+	meshLeft.addVertex({ glm::vec3(-1.0f,  0.5f, 0.0f), glm::vec3(0), glm::vec3(0) });
+	Mesh meshRight;
+	meshRight.setTag("Test Mesh Right");
+	meshRight.addVertex({ glm::vec3(0.0f, -0.5f, 0.0f), glm::vec3(0), glm::vec3(0) });
+	meshRight.addVertex({ glm::vec3(1.0f, -0.5f, 0.0f), glm::vec3(0), glm::vec3(0) });
+	meshRight.addVertex({ glm::vec3(0.0f,  0.5f, 0.0f), glm::vec3(0), glm::vec3(0) });
+
 	Shader shader;
 	shader.setTag("Test Shader");
 	shader.load("resources/shaders/basic.glsl");
 	shader.complete();
 
-	std::vector<float> verticesVector = {
-	-1.0f, -0.5f, 0.0f,
-	 0.0f, -0.5f, 0.0f,
-	-1.0f,  0.5f, 0.0f
-	};
-	std::vector<float> verticesVector2 = {
-	0.0f, -0.5f, 0.0f,
-	1.0f, -0.5f, 0.0f,
-	0.0f,  0.5f, 0.0f
-	};
-
 	VertexBuffer vbo(BUFFER_ARRAY);
-	VertexBufferLayout layout;
-	layout.push<float>(3);
-	vbo.allocate(sizeof(float) * verticesVector.size() * 2);
-	vbo.addData(verticesVector.data(), sizeof(float) * verticesVector.size());
-	vbo.addData(verticesVector2.data(), sizeof(float) * verticesVector2.size());
+	vbo.setTag("Test VBO");
+	vbo.allocate(sizeof(Vertex) * 9);
+	meshLeft.addToVertexBuffer(vbo);
+	meshRight.addToVertexBuffer(vbo);
+	
 	VertexArray vao;
-	vao.addBuffer(vbo, layout);
+	vao.addBuffer(vbo, Mesh::getLayout());
 
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 

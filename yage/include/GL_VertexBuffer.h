@@ -81,11 +81,12 @@ namespace YAGE
 		/** @brief Adds data to the VBO
 		*	@param _data he data to add to the VBO
 		*	@param _size The size of the data in bytes
+		*	@return The offset at which the data was written to
 		*
 		*	Adds data to the VBO from the point of the last item of data. The loadSubData method will check to make sure
 		*	the data does not go over the bounds of the buffer.
 		*/
-		void addData(const void *_data, unsigned int _size);
+		unsigned int addData(const void *_data, unsigned int _size);
 
 		/** @brief Returns the count of the number of items contained within the buffer.
 		*	@return The count
