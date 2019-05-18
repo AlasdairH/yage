@@ -26,6 +26,10 @@ namespace YAGE
 		void load(const std::string &_file);
 		bool complete();
 
+		void bind() { glUseProgram(m_glID); }
+		
+		static void unbind();
+
 	protected:
 		enum ShaderSourceType { SHADER_SOURCE_UNKNOWN, 
 			SHADER_SOURCE_VERTEX =		GL_VERTEX_SHADER, 
