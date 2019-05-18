@@ -20,7 +20,7 @@ namespace YAGE
 		void setTag(const std::string &_newTag) { m_tag = _newTag; }
 
 	protected:
-		std::string m_tag;					/**< The name of the resource */
+		std::string m_tag = "Default Tag";	/**< The name of the resource */
 
 		unsigned int m_uID;					/**< The Unique ID for the resource */
 		static unsigned int m_nextUID;		/**< A static number for the next resource ID to be allocated. This is incremented with each new resource */
