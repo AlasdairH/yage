@@ -327,6 +327,7 @@
     <ClCompile Include="src\GraphicsContext_OpenGL.cpp" />
     <ClCompile Include="src\IOUtilities.cpp" />
     <ClCompile Include="src\Log.cpp" />
+    <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\PCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Test_Logging|Win32'">Create</PrecompiledHeader>
@@ -351,9 +352,11 @@
     <ClInclude Include="include\IOUtilities.h" />
     <ClInclude Include="include\Log.h" />
     <ClInclude Include="include\GraphicsContext_OpenGL.h" />
+    <ClInclude Include="include\Mesh.h" />
     <ClInclude Include="include\PCH.h" />
     <ClInclude Include="include\GL_Shader.h" />
     <ClInclude Include="include\ResBase.h" />
+    <ClInclude Include="include\Vertex.h" />
     <ClInclude Include="include\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -60,9 +60,11 @@ namespace YAGE
 			m_dataEndPoint = _offset + _size;
 	}
 
-	void VertexBuffer::addData(const void *_data, unsigned int _size)
+	unsigned int VertexBuffer::addData(const void *_data, unsigned int _size)
 	{
+		unsigned int dataOffset = m_dataEndPoint;
 		loadSubData(_data, _size, m_dataEndPoint);
+		return dataOffset;
 	}
 
 	void VertexBuffer::bind() const
