@@ -1,26 +1,30 @@
-2019-05-18 16:12:36:DEBUG(Window:13): Starting SDL initilisation
-2019-05-18 16:12:36:DEBUG(Window:21): SDL successfully initialised
-2019-05-18 16:12:36:DEBUG(Window:24): Creating window
-2019-05-18 16:12:37:DEBUG(Window:33): Window created successfully
-2019-05-18 16:12:37:DEBUG(OpenGLContext:12): Starting GLEW initialisation
-2019-05-18 16:12:37:DEBUG(OpenGLContext:22): GLEW successfully initialised
-2019-05-18 16:12:37:DEBUG(OpenGLContext:36): Set SDL_GL settings
-2019-05-18 16:12:37:DEBUG(ResBase:13): Created resource with uID 0
-2019-05-18 16:12:37:DEBUG(ResBase:13): Created resource with uID 1
-2019-05-18 16:12:37:DEBUG(ResBase:13): Created resource with uID 2
-2019-05-18 16:12:37:DEBUG(create:173): Created shader program 1
-2019-05-18 16:12:37:DEBUG(attach:116): Shader 2 with type 35633 successfully attached to program 1
-2019-05-18 16:12:37:DEBUG(attach:116): Shader 3 with type 35632 successfully attached to program 1
-2019-05-18 16:12:37:DEBUG(complete:139): Shader Program 1 successfully linked
-2019-05-18 16:12:37:DEBUG(complete:145): Removed source shader 2
-2019-05-18 16:12:37:DEBUG(complete:145): Removed source shader 3
-2019-05-18 16:12:37:DEBUG(ResBase:13): Created resource with uID 3
-2019-05-18 16:12:37:DEBUG(init:111): Vertex Buffer Object with ID: 1 Created
-2019-05-18 16:12:37:DEBUG(addToVertexBuffer:23): Added Mesh Test Mesh Left to Vertex Buffer Test VBO with size 108
-2019-05-18 16:12:37:DEBUG(addToVertexBuffer:23): Added Mesh Test Mesh Right to Vertex Buffer Test VBO with size 108
-2019-05-18 16:12:37:DEBUG(ResBase:13): Created resource with uID 4
-2019-05-18 16:12:37:DEBUG(VertexArray:9): Vertex Array Object with ID: 1 Created
-2019-05-18 16:12:37:DEBUG(main:58): Starting main loop
-2019-05-18 16:12:40:DEBUG(main:67): SDL_QUIT event called
-2019-05-18 16:12:40:DEBUG(main:84): Main loop ended
-2019-05-18 16:12:40:MESSAGE(main:86): Debugs: 25 | Warnings: 0 | Errors: 0
+2019-05-18 16:33:56:DEBUG(Window:13): Starting SDL initilisation
+2019-05-18 16:33:59:DEBUG(Window:21): SDL successfully initialised
+2019-05-18 16:33:59:DEBUG(Window:24): Creating window
+2019-05-18 16:34:00:DEBUG(Window:33): Window created successfully
+2019-05-18 16:34:00:DEBUG(OpenGLContext:12): Starting GLEW initialisation
+2019-05-18 16:34:00:DEBUG(OpenGLContext:22): GLEW successfully initialised
+2019-05-18 16:34:00:DEBUG(OpenGLContext:36): Set SDL_GL settings
+2019-05-18 16:34:00:DEBUG(ResBase:14): Created resource with uID 0
+2019-05-18 16:34:00:DEBUG(setTag:20): Set resource 0 to tag Test Mesh Left
+2019-05-18 16:34:00:DEBUG(ResBase:14): Created resource with uID 1
+2019-05-18 16:34:00:DEBUG(setTag:20): Set resource 1 to tag Test Mesh Right
+2019-05-18 16:34:00:DEBUG(ResBase:14): Created resource with uID 2
+2019-05-18 16:34:00:DEBUG(create:173): Created shader program 1
+2019-05-18 16:34:00:DEBUG(setTag:20): Set resource 2 to tag Test Shader
+2019-05-18 16:34:00:DEBUG(attach:116): Shader 2 with type 35633 successfully attached to program 1
+2019-05-18 16:34:00:DEBUG(attach:116): Shader 3 with type 35632 successfully attached to program 1
+2019-05-18 16:34:00:DEBUG(complete:139): Shader Program 1 successfully linked
+2019-05-18 16:34:00:DEBUG(complete:145): Removed source shader 2
+2019-05-18 16:34:00:DEBUG(complete:145): Removed source shader 3
+2019-05-18 16:34:00:DEBUG(ResBase:14): Created resource with uID 3
+2019-05-18 16:34:00:DEBUG(init:111): Vertex Buffer Object with ID: 1 Created
+2019-05-18 16:34:00:DEBUG(setTag:20): Set resource 3 to tag Test VBO
+2019-05-18 16:34:00:DEBUG(addToVertexBuffer:23): Added Mesh Test Mesh Left to Vertex Buffer Test VBO with size 108
+2019-05-18 16:34:00:DEBUG(addToVertexBuffer:23): Added Mesh Test Mesh Right to Vertex Buffer Test VBO with size 108
+2019-05-18 16:34:00:DEBUG(ResBase:14): Created resource with uID 4
+2019-05-18 16:34:00:DEBUG(VertexArray:9): Vertex Array Object with ID: 1 Created
+2019-05-18 16:34:00:DEBUG(main:58): Starting main loop
+2019-05-18 16:34:09:DEBUG(main:67): SDL_QUIT event called
+2019-05-18 16:34:09:DEBUG(main:84): Main loop ended
+2019-05-18 16:34:09:MESSAGE(main:86): Debugs: 29 | Warnings: 0 | Errors: 0
