@@ -142,6 +142,7 @@ namespace YAGE
 		for (const auto &pair : m_attached)
 		{
 			glDeleteShader(pair.first);
+			LOG(LOG_DEBUG) << "Removed source shader " << pair.first;
 		}
 		return true;
 	}
