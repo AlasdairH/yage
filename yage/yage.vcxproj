@@ -319,6 +319,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\GL_Shader.cpp" />
     <ClCompile Include="src\GL_ShaderModifier.cpp" />
     <ClCompile Include="src\GL_VertexArray.cpp" />
@@ -339,9 +340,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\ResBase.cpp" />
+    <ClCompile Include="src\Transform.cpp" />
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Camera.h" />
     <ClInclude Include="include\CompileSettings.h" />
     <ClInclude Include="include\GL_Base.h" />
     <ClInclude Include="include\GL_ShaderModifier.h" />
@@ -356,6 +359,7 @@
     <ClInclude Include="include\PCH.h" />
     <ClInclude Include="include\GL_Shader.h" />
     <ClInclude Include="include\ResBase.h" />
+    <ClInclude Include="include\Transform.h" />
     <ClInclude Include="include\Vertex.h" />
     <ClInclude Include="include\Window.h" />
   </ItemGroup>

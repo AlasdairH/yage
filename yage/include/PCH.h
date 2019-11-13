@@ -18,6 +18,7 @@
 #include <SDL/SDL.h>
 #include <GL/glew.h>
 #include <GLM/glm.hpp>
+#include <GLM/gtc/matrix_transform.hpp>
 
 // Program
 #include "CompileSettings.h"

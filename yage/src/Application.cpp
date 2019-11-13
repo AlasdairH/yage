@@ -13,6 +13,7 @@
 #include "GL_ShaderModifier.h"
 #include "Vertex.h"
 #include "Mesh.h"
+#include "Transform.h"
 
 #undef main
 
@@ -35,9 +36,11 @@ int main()
 	meshLeft.addVertex({ glm::vec3(-1.0f,  0.5f, 0.0f), glm::vec3(0), glm::vec3(0) });
 	Mesh meshRight;
 	meshRight.setTag("Test Mesh Right");
-	meshRight.addVertex({ glm::vec3(0.0f, -0.5f, 0.0f), glm::vec3(0), glm::vec3(0) });
-	meshRight.addVertex({ glm::vec3(1.0f, -0.5f, 0.0f), glm::vec3(0), glm::vec3(0) });
-	meshRight.addVertex({ glm::vec3(0.0f,  0.5f, 0.0f), glm::vec3(0), glm::vec3(0) });
+	meshRight.addVertex({ glm::vec3(0.0f, -0.5f, 1.0f), glm::vec3(0), glm::vec3(0) });
+	meshRight.addVertex({ glm::vec3(1.0f, -0.5f, 1.0f), glm::vec3(0), glm::vec3(0) });
+	meshRight.addVertex({ glm::vec3(0.0f,  0.5f, 1.0f), glm::vec3(0), glm::vec3(0) });
+
+	Transform transform;
 
 	Shader shader;
 	shader.setTag("Test Shader");
@@ -46,7 +49,7 @@ int main()
 
 	VertexBuffer vbo(BUFFER_ARRAY);
 	vbo.setTag("Test VBO");
-	vbo.allocate(sizeof(Vertex) * 9);
+	vbo.allocate(sizeof(Vertex) * 6);
 	meshLeft.addToVertexBuffer(vbo);
 	meshRight.addToVertexBuffer(vbo);
 	
@@ -75,6 +78,7 @@ int main()
 		vao.bind();
 
 		ShaderModifier::setUniform4f(shader.getUniformLocation("u_colour"), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+		//ShaderModifier::setUniform4f(shader.getUniformLocation("u_modelMatrix"), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		ShaderModifier::setUniform4f(shader.getUniformLocation("u_colour"), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
 		glDrawArrays(GL_TRIANGLES, 3, 3);
