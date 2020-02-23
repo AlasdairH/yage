@@ -13,6 +13,8 @@ namespace YAGE
 	public:
 		static void setUniform4f(const int &_location, const glm::vec4 &_value);
 
+		static void setUniformMat4(const int &_location, const glm::mat4 &_value);
+
 	protected:
 		static int getAttributeLocation(Shader &_shader, const std::string &_attribute);
 	};

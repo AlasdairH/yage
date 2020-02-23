@@ -27,6 +27,7 @@ namespace YAGE
 		bind();
 		glBufferData(m_vertexBufferType, _size, NULL, m_usage);
 		m_bufferSize = _size;
+		LOG(LOG_DEBUG) << "Allocated " << _size << " bytes to vertex buffer " << m_tag;
 	}
 
 	void VertexBuffer::loadData(const void *_data, unsigned int _count, unsigned int _size)

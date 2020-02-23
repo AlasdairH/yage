@@ -12,7 +12,7 @@ namespace YAGE
 
 	glm::mat4 Transform::getModelMatrix()
 	{
-		if (!positionChanged)
+		if (!m_modified)
 		{
 			return m_modelMatrix;
 		}
@@ -27,6 +27,8 @@ namespace YAGE
 	{
 		m_position_vec3 = _position;
 		m_position_mat4 = glm::translate(glm::mat4(1), m_position_vec3);
+
+		m_modified = true;
 	}
 	void Transform::setRotation(const glm::vec3& _rotation)
 	{
@@ -37,5 +39,7 @@ namespace YAGE
 	{
 		m_scale_vec3 = _scale;
 		m_position_mat4 = glm::scale(glm::mat4(1), m_scale_vec3);
+
+		m_modified = true;
 	}
 }

@@ -33,6 +33,21 @@ namespace YAGE
 
 		int getUniformLocation(const std::string& _uniform);
 
+		/** @brief Gets a Uniform Block Index
+		*	@param _name The name of the block to get
+		*
+		*	The index of the uniform block on the shader
+		*/
+		GLuint getUniformBlockIndex(const std::string& _name);
+
+		/** @brief Gets a Uniform Block Index
+		*	@param _blockIndex The block index name to bind to the binding point
+		*	@param _bindingPoint The binding point to bind the block index to
+		*
+		*	Binds uniform block to binding point
+		*/
+		void linkUniformBlock(const std::string& _blockIndex, GLuint _bindingPoint);
+
 	protected:
 		enum ShaderSourceType { SHADER_SOURCE_UNKNOWN, 
 			SHADER_SOURCE_VERTEX =		GL_VERTEX_SHADER, 

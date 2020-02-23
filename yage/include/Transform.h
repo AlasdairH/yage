@@ -28,6 +28,6 @@ namespace YAGE
 
 		glm::mat4 m_modelMatrix;
 
-		bool positionChanged = false;
+		bool m_modified = false;
 	};
 }

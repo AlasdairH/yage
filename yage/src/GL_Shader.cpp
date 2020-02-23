@@ -163,6 +163,7 @@ namespace YAGE
 
 		// update the cache
 		m_uniformLocationCache[_uniform] = location;
+		LOG(LOG_DEBUG) << "Found shader uniform " << _uniform << " at location " << location << ", adding to cache";
 
 		return location;
 	}
@@ -171,5 +172,23 @@ namespace YAGE
 	{
 		m_glID = glCreateProgram();
 		LOG(LOG_DEBUG) << "Created shader program " << m_glID;
+	}
+
+	GLuint Shader::getUniformBlockIndex(const std::string& _name)
+	{
+		bind();
+		GLuint blockIndex = glGetUniformBlockIndex(m_glID, _name.c_str());
+		if (blockIndex == -1)
+		{
+			LOG(LOG_WARNING) << "Uniform block " << _name << " does not exist (" << blockIndex << ")";
+		}
+		return blockIndex;
+	}
+
+	void Shader::linkUniformBlock(const std::string& _blockIndex, GLuint _bindingPoint)
+	{
+		bind();
+		glUniformBlockBinding(m_glID, getUniformBlockIndex(_blockIndex), _bindingPoint);
+		LOG(LOG_DEBUG) << "Linked shader " << m_glID << " uniform block " << _blockIndex << " to binding point " << _bindingPoint;
 	}
 }

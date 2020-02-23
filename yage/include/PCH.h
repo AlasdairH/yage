@@ -2,6 +2,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #define GLEW_STATIC
 
+#define SHADER_BINDPOINT_CAMERA_VP 0
+
 // STL
 #include <iostream>
 #include <sstream>
@@ -24,3 +26,4 @@
 #include "CompileSettings.h"
 #include "Log.h"
 #include "GraphicsContext_OpenGL.h"
+#include "Timer.h"

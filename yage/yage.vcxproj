@@ -38,7 +38,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{E76C3F0D-86F2-490C-AC06-2261098420CC}</ProjectGuid>
     <RootNamespace>yage</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -339,11 +339,16 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Test_Benchmark|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Profiler.cpp" />
     <ClCompile Include="src\ResBase.cpp" />
+    <ClCompile Include="src\Timer.cpp" />
     <ClCompile Include="src\Transform.cpp" />
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\c3p\c3p\src\Profiler.h" />
+    <ClInclude Include="..\..\c3p\c3p\src\Timer.h" />
+    <ClInclude Include="..\..\c3p\c3p\src\TraceEvents.h" />
     <ClInclude Include="include\Camera.h" />
     <ClInclude Include="include\CompileSettings.h" />
     <ClInclude Include="include\GL_Base.h" />
@@ -358,10 +363,16 @@
     <ClInclude Include="include\Mesh.h" />
     <ClInclude Include="include\PCH.h" />
     <ClInclude Include="include\GL_Shader.h" />
+    <ClInclude Include="include\Profiler.h" />
     <ClInclude Include="include\ResBase.h" />
+    <ClInclude Include="include\Timer.h" />
+    <ClInclude Include="include\TraceEvents.h" />
     <ClInclude Include="include\Transform.h" />
     <ClInclude Include="include\Vertex.h" />
     <ClInclude Include="include\Window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\shaders\basic.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
