@@ -22,30 +22,10 @@ namespace YAGE
 
 	}
 
-	void Camera::cleanViewMatrix()
-	{
-		recalculateProjectionMatrix();
-	}
-
-	void Camera::recalculateProjectionMatrix()
-	{
-		if (meProjectionMode == PROJECTION_PERSPECTIVE)
-		{
-			moMat4ProjectionMatrix = glm::perspective(mfFovRad, mfAspect, 0.1f, 100.0f);
-		}
-		else if (meProjectionMode == PROJECTION_ORTHOGRAPHIC)
-		{
-			float fOrthoHeight = glm::degrees(mfFovRad) / 4;
-			float fOrthoWidth = fOrthoHeight * mfAspect;
-			float fDivisor = 10;
-			moMat4ProjectionMatrix = glm::ortho(-(fOrthoWidth / fDivisor), fOrthoWidth / fDivisor, -(fOrthoHeight / fDivisor), fOrthoHeight / fDivisor, 0.0f, 10.0f);
-		}
-	}
-
 	void Camera::setProjectionMode(ProjectionMode eMode)
 	{
 		meProjectionMode = eMode;
-		recalculateProjectionMatrix();
+		calculateProjectionMatrix();
 	}
 
 	Camera::ProjectionMode Camera::getProjectionMode()
@@ -58,6 +38,11 @@ namespace YAGE
 		return moMat4ProjectionMatrix;
 	}
 
+	void Camera::update()
+	{
+		updateCameraUniform();
+	}
+
 	void Camera::updateCameraUniform()
 	{
 		moUniformData.viewMatrix = glm::lookAt(oTransform.getPosition(), oTransform.getPosition() + moFront, moUp);
@@ -65,5 +50,20 @@ namespace YAGE
 		moUniformData.viewProjectionMatrix = moMat4ProjectionMatrix * moUniformData.viewMatrix;
 
 		mpoMatrixUniformBuffer->loadData(&moUniformData, 0, sizeof(CameraMatrixData));
+	}
+
+	void Camera::calculateProjectionMatrix()
+	{
+		if (meProjectionMode == PROJECTION_PERSPECTIVE)
+		{
+			moMat4ProjectionMatrix = glm::perspective(mfFovRad, mfAspect, 0.1f, 100.0f);
+		}
+		else if (meProjectionMode == PROJECTION_ORTHOGRAPHIC)
+		{
+			float fOrthoHeight = glm::degrees(mfFovRad) / 4;
+			float fOrthoWidth = fOrthoHeight * mfAspect;
+			float fDivisor = 10;
+			moMat4ProjectionMatrix = glm::ortho(-(fOrthoWidth / fDivisor), fOrthoWidth / fDivisor, -(fOrthoHeight / fDivisor), fOrthoHeight / fDivisor, 0.0f, 10.0f);
+		}
 	}
 }

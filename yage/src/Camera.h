@@ -37,7 +37,7 @@ namespace YAGE
 		*
 		*	Sets the FoV and cleans the projection matrix
 		*/
-		inline void setFOV(const float _fov) { mfFovRad = _fov; cleanViewMatrix(); }
+		inline void setFOV(const float _fov) { mfFovRad = _fov; }
 
 		void setProjectionMode(const ProjectionMode eMode);
 		Camera::ProjectionMode getProjectionMode();
@@ -49,22 +49,11 @@ namespace YAGE
 		*/
 		glm::mat4 getProjectionMatrix();
 
-		/** @brief Updates the OpenGL Camera Data Uniform
-		*
-		*	Updates the GPU side uniform for camera view and projection matrices.
-		*/
-		void updateCameraUniform();
-
-		void recalculateProjectionMatrix();
-
-		
+		void update();
 
 	protected:
-		/** @brief Sets the updated Projection Matrix
-		*
-		*	Sets a fresh perspective matrix from the FoV, aspect ratio and near / far planes
-		*/
-		void cleanViewMatrix();
+		void updateCameraUniform();
+		void calculateProjectionMatrix();
 
 		ProjectionMode			meProjectionMode	= PROJECTION_PERSPECTIVE;	/**< The current projection matrix */
 

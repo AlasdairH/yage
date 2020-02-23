@@ -66,8 +66,7 @@ int main()
 	vao.addBuffer(vbo, Mesh::getLayout());
 
 	oMainCamera.oTransform.setPosition(0, 0, 2);
-	oMainCamera.recalculateProjectionMatrix();
-	oMainCamera.updateCameraUniform();
+	oMainCamera.update();
 
 	glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 
@@ -105,10 +104,15 @@ int main()
 						{
 							oMainCamera.setProjectionMode(Camera::ProjectionMode::PROJECTION_ORTHOGRAPHIC);
 						}
-						oMainCamera.recalculateProjectionMatrix();
-						oMainCamera.updateCameraUniform();
+						oMainCamera.update();
 						LOG(LOG_DEBUG) << "Switching camera projection mode";
 						break;
+
+					case SDLK_w:
+						break;
+
+					default:
+						LOG(LOG_DEBUG) << "Unmapped key pressed";
 					}
 					break;
 			}
