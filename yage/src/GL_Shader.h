@@ -28,7 +28,7 @@ namespace YAGE
 		void load(const std::string &_file);
 		bool complete();
 
-		void bind() { glUseProgram(m_glID); }
+		void bind() { glUseProgram(muiGLID); }
 		static void unbind() { glUseProgram(0); }
 
 		int getUniformLocation(const std::string& _uniform);

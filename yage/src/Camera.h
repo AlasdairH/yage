@@ -49,6 +49,10 @@ namespace YAGE
 		*/
 		glm::mat4 getProjectionMatrix();
 
+		/** @brief Update the camera data on the GPU
+		*
+		*	Takes any modifications on the CPU side and transfers them over to the GPU buffer
+		*/
 		void update();
 
 	protected:

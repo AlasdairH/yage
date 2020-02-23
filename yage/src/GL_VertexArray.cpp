@@ -5,20 +5,20 @@ namespace YAGE
 {
 	VertexArray::VertexArray()
 	{
-		glGenVertexArrays(1, &m_glID);
-		LOG(LOG_DEBUG) << "Vertex Array Object with ID: " << m_glID << " Created";
+		glGenVertexArrays(1, &muiGLID);
+		LOG(LOG_DEBUG) << "Vertex Array Object with ID: " << muiGLID << " Created";
 	}
 
 	VertexArray::~VertexArray()
 	{
-		glDeleteVertexArrays(1, &m_glID);
-		LOG(LOG_DEBUG) << "Vertex Array Object with ID: " << m_glID << " Deleted";
+		glDeleteVertexArrays(1, &muiGLID);
+		LOG(LOG_DEBUG) << "Vertex Array Object with ID: " << muiGLID << " Deleted";
 	}
 
 	void VertexArray::reset()
 	{
-		glDeleteVertexArrays(1, &m_glID);
-		glGenVertexArrays(1, &m_glID);
+		glDeleteVertexArrays(1, &muiGLID);
+		glGenVertexArrays(1, &muiGLID);
 	}
 
 	void VertexArray::addBuffer(const VertexBuffer & _vertexBuffer, const VertexBufferLayout & _layout)

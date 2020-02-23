@@ -27,7 +27,7 @@ namespace YAGE
 		VertexBufferLayout layout;
 		layout.push<glm::vec3>(1);
 		layout.push<glm::vec3>(1);
-		layout.push<glm::vec3>(1);
+		layout.push<glm::vec2>(1);
 		return layout;
 	}
 }

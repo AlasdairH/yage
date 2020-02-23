@@ -322,6 +322,7 @@
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\GL_Shader.cpp" />
     <ClCompile Include="src\GL_ShaderModifier.cpp" />
+    <ClCompile Include="src\GL_Texture.cpp" />
     <ClCompile Include="src\GL_VertexArray.cpp" />
     <ClCompile Include="src\GL_VertexBuffer.cpp" />
     <ClCompile Include="src\GL_VertexBufferLayout.cpp" />
@@ -346,11 +347,10 @@
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\c3p\c3p\src\Profiler.h" />
-    <ClInclude Include="..\..\c3p\c3p\src\Timer.h" />
-    <ClInclude Include="..\..\c3p\c3p\src\TraceEvents.h" />
+    <ClInclude Include="src\GL_Texture.h" />
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\CompileSettings.h" />
+    <ClInclude Include="src\ext\stbimage.h" />
     <ClInclude Include="src\GL_Base.h" />
     <ClInclude Include="src\GL_Shader.h" />
     <ClInclude Include="src\GL_ShaderModifier.h" />

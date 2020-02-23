@@ -12,15 +12,15 @@ namespace YAGE
 
 	Shader::~Shader()
 	{
-		glDeleteProgram(m_glID);
-		LOG(LOG_DEBUG) << "Deleted shader program " << m_glID;
+		glDeleteProgram(muiGLID);
+		LOG(LOG_DEBUG) << "Deleted shader program " << muiGLID;
 	}
 
 	void Shader::load(const std::string& _file)
 	{
 		if (m_linked)
 		{
-			LOG(LOG_ERROR) << "Unable to load to Shader " << m_glID << ", already linked";
+			LOG(LOG_ERROR) << "Unable to load to Shader " << muiGLID << ", already linked";
 			return;
 		}
 
@@ -111,9 +111,9 @@ namespace YAGE
 		}
 		
 		// attach the shader to the program
-		glAttachShader(m_glID, shaderID);
+		glAttachShader(muiGLID, shaderID);
 
-		LOG(LOG_DEBUG) << "Shader " << shaderID << " with type " << _type << " successfully attached to program " << m_glID;
+		LOG(LOG_DEBUG) << "Shader " << shaderID << " with type " << _type << " successfully attached to program " << muiGLID;
 
 		// push back the shaderID so we can remove it later once we've linked the shader program together
 		m_attached.push_back(std::pair<unsigned int, ShaderSourceType>(shaderID, _type));
@@ -122,21 +122,21 @@ namespace YAGE
 	bool Shader::complete()
 	{
 		// link the program
-		glLinkProgram(m_glID);
+		glLinkProgram(muiGLID);
 
 		// check the shader is valid and store the result
 		int  success;
 		char infoLog[512];
-		glGetProgramiv(m_glID, GL_LINK_STATUS, &success);
+		glGetProgramiv(muiGLID, GL_LINK_STATUS, &success);
 		if (!success)
 		{
-			glGetProgramInfoLog(m_glID, 512, NULL, infoLog);
+			glGetProgramInfoLog(muiGLID, 512, NULL, infoLog);
 			LOG(LOG_ERROR) << "Program link failed: " << infoLog;
 			return false;
 		}
 
 		m_linked = true;
-		LOG(LOG_DEBUG) << "Shader Program " << m_glID << " successfully linked";
+		LOG(LOG_DEBUG) << "Shader Program " << muiGLID << " successfully linked";
 
 		if (getUniformBlockIndex("uCameraData") != -1)
 		{
@@ -165,7 +165,7 @@ namespace YAGE
 			return m_uniformLocationCache[_uniform];
 
 		// else, lets go looking for it
-		int location = glGetUniformLocation(m_glID, _uniform.c_str());
+		int location = glGetUniformLocation(muiGLID, _uniform.c_str());
 		if (location == -1)
 		{
 			LOG(LOG_WARNING) << "Attribute name " << _uniform << " does not exist!";
@@ -181,14 +181,14 @@ namespace YAGE
 
 	void Shader::create()
 	{
-		m_glID = glCreateProgram();
-		LOG(LOG_DEBUG) << "Created shader program " << m_glID;
+		muiGLID = glCreateProgram();
+		LOG(LOG_DEBUG) << "Created shader program " << muiGLID;
 	}
 
 	GLuint Shader::getUniformBlockIndex(const std::string& _name)
 	{
 		bind();
-		GLuint blockIndex = glGetUniformBlockIndex(m_glID, _name.c_str());
+		GLuint blockIndex = glGetUniformBlockIndex(muiGLID, _name.c_str());
 		if (blockIndex == -1)
 		{
 			LOG(LOG_WARNING) << "Uniform block " << _name << " does not exist (" << blockIndex << ")";
@@ -199,7 +199,7 @@ namespace YAGE
 	void Shader::linkUniformBlock(const std::string& _blockIndex, GLuint _bindingPoint)
 	{
 		bind();
-		glUniformBlockBinding(m_glID, getUniformBlockIndex(_blockIndex), _bindingPoint);
-		LOG(LOG_DEBUG) << "Linked shader " << m_glID << " uniform block " << _blockIndex << " to binding point " << _bindingPoint;
+		glUniformBlockBinding(muiGLID, getUniformBlockIndex(_blockIndex), _bindingPoint);
+		LOG(LOG_DEBUG) << "Linked shader " << muiGLID << " uniform block " << _blockIndex << " to binding point " << _bindingPoint;
 	}
 }

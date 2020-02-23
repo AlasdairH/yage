@@ -41,11 +41,22 @@ namespace YAGE
 		//m_rotation_vec3 = _rotation;
 		//m_rotation_mat4 = glm::rotate();
 	}
+
 	void Transform::setScale(const glm::vec3& _scale)
 	{
 		m_scale_vec3 = _scale;
 		m_position_mat4 = glm::scale(glm::mat4(1), m_scale_vec3);
 
 		m_modified = true;
+	}
+
+	void Transform::translate(const glm::vec3& oTranslation)
+	{
+		setPosition(getPosition() + oTranslation);
+	}
+
+	void Transform::translate(const float fX, const float fY, const float fZ)
+	{
+		translate(glm::vec3(fX, fY, fZ));
 	}
 }

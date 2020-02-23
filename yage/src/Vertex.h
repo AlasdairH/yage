@@ -11,6 +11,6 @@ namespace YAGE
 	{
 		glm::vec3 position;
 		glm::vec3 normal;
-		glm::vec3 textureCoordinates;
+		glm::vec2 textureCoordinates;
 	};
 }

@@ -62,7 +62,7 @@ namespace YAGE
 		*
 		*	Binds the Vertex Array Object (VAO)
 		*/
-		inline void bind() const { glBindVertexArray(m_glID); }
+		inline void bind() const { glBindVertexArray(muiGLID); }
 		/** @brief VertexArray Dtor
 		*
 		*	Unbinds the Vertex Array Object (VAO)

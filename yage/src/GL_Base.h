@@ -20,10 +20,10 @@ namespace YAGE
 	class GL_Base : public Resource
 	{
 	public:
-		inline unsigned int getGlID() { return m_glID; }
+		inline unsigned int getGlID() { return muiGLID; }
 
 	protected:
-		unsigned int	m_glID = 0;						/**< A unique ID set in the derived constructor */
+		unsigned int	muiGLID = 0;						/**< A unique ID set in the derived constructor */
 		GL_BaseType		m_glType = GL_TYPE_UNKNOWN;		/**< The type of OpenGL resource */
 	};
 }

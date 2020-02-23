@@ -18,8 +18,8 @@ namespace YAGE
 
 	VertexBuffer::~VertexBuffer()
 	{
-		glDeleteBuffers(1, &m_glID);
-		LOG(LOG_DEBUG) << "Vertex Buffer Object with ID: " << m_glID << " Deleted";
+		glDeleteBuffers(1, &muiGLID);
+		LOG(LOG_DEBUG) << "Vertex Buffer Object with ID: " << muiGLID << " Deleted";
 	}
 
 	void VertexBuffer::allocate(unsigned int _size)
@@ -70,11 +70,11 @@ namespace YAGE
 
 	void VertexBuffer::bind() const
 	{
-		glBindBuffer(m_vertexBufferType, m_glID);
+		glBindBuffer(m_vertexBufferType, muiGLID);
 	}
 	void VertexBuffer::bind(VertexBufferType _bindPoint) const
 	{
-		glBindBuffer(_bindPoint, m_glID);
+		glBindBuffer(_bindPoint, muiGLID);
 	}
 
 	void VertexBuffer::unBind() const
@@ -84,12 +84,12 @@ namespace YAGE
 
 	void VertexBuffer::bindBase(unsigned int _base, unsigned int _index)
 	{
-		glBindBufferBase(_base, _index, m_glID);
+		glBindBufferBase(_base, _index, muiGLID);
 	}
 
 	void VertexBuffer::init()
 	{
-		glGenBuffers(1, &m_glID);
+		glGenBuffers(1, &muiGLID);
 
 		// try to guess what the usage pattern will be, can be set otherwise
 		if (m_vertexBufferType == BUFFER_ARRAY || m_vertexBufferType == BUFFER_ELEMENT_ARRAY)
@@ -109,6 +109,6 @@ namespace YAGE
 			m_usage = GL_STATIC_COPY;
 		}
 
-		LOG(LOG_DEBUG) << "Vertex Buffer Object with ID: " << m_glID << " Created";
+		LOG(LOG_DEBUG) << "Vertex Buffer Object with ID: " << muiGLID << " Created";
 	}
 }

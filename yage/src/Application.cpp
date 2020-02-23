@@ -11,6 +11,7 @@
 #include "GL_VertexBuffer.h"
 #include "GL_VertexBufferLayout.h"
 #include "GL_ShaderModifier.h"
+#include "GL_Texture.h"
 #include "Vertex.h"
 #include "Mesh.h"
 #include "Transform.h"
@@ -37,19 +38,20 @@ int main()
 	Camera oMainCamera;
 	oMainCamera.setProjectionMode(Camera::ProjectionMode::PROJECTION_ORTHOGRAPHIC);
 
-	Mesh meshLeft;
-	meshLeft.setTag("Test Mesh Left");
-	meshLeft.addVertex({ glm::vec3(-1.0f, -0.5f, 0.0f), glm::vec3(0), glm::vec3(0) });
-	meshLeft.addVertex({ glm::vec3( 0.0f, -0.5f, 0.0f), glm::vec3(0), glm::vec3(0) });
-	meshLeft.addVertex({ glm::vec3(-1.0f,  0.5f, 0.0f), glm::vec3(0), glm::vec3(0) });
-	Mesh meshRight;
-	meshRight.setTag("Test Mesh Right");
-	meshRight.addVertex({ glm::vec3(0.0f, -0.5f, 1.0f), glm::vec3(0), glm::vec3(0) });
-	meshRight.addVertex({ glm::vec3(1.0f, -0.5f, 1.0f), glm::vec3(0), glm::vec3(0) });
-	meshRight.addVertex({ glm::vec3(0.0f,  0.5f, 1.0f), glm::vec3(0), glm::vec3(0) });
+	Mesh oMeshVertices;
+	oMeshVertices.setTag("Test Mesh Left");
+	oMeshVertices.addVertex({ glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0), glm::vec2(0, 1) });
+	oMeshVertices.addVertex({ glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0), glm::vec2(1, 1) });
+	oMeshVertices.addVertex({ glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(0), glm::vec2(1, 0) });
+	oMeshVertices.addVertex({ glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0), glm::vec2(0, 0) });
+
+	unsigned int uiIndices[] = { 0, 1, 2, 2, 3, 0 };
+
+	VertexBuffer oIndexBuffer(BUFFER_ELEMENT_ARRAY);
+	oIndexBuffer.allocate(sizeof(unsigned int) * 6);
+	oIndexBuffer.loadData(&uiIndices[0], sizeof(unsigned int) * 6);
 
 	Transform transform;
-	
 
 	Shader shader;
 	shader.setTag("Test Shader");
@@ -59,11 +61,13 @@ int main()
 	VertexBuffer vbo(BUFFER_ARRAY);
 	vbo.setTag("Test VBO");
 	vbo.allocate(sizeof(Vertex) * 6);
-	meshLeft.addToVertexBuffer(vbo);
-	meshRight.addToVertexBuffer(vbo);
+	oMeshVertices.addToVertexBuffer(vbo);
 	
 	VertexArray vao;
 	vao.addBuffer(vbo, Mesh::getLayout());
+
+	Texture oTexture;
+	oTexture.fromFile("face.jpg");
 
 	oMainCamera.oTransform.setPosition(0, 0, 2);
 	oMainCamera.update();
@@ -109,6 +113,23 @@ int main()
 						break;
 
 					case SDLK_w:
+						oMainCamera.oTransform.translate(0.0f, 0.25f, 0.0f);
+						oMainCamera.update();
+						break;
+
+					case SDLK_s:
+						oMainCamera.oTransform.translate(0.0f, -0.25f, 0.0f);
+						oMainCamera.update();
+						break;
+
+					case SDLK_a:
+						oMainCamera.oTransform.translate(-0.25f, 0.0f, 0.0f);
+						oMainCamera.update();
+						break;
+
+					case SDLK_d:
+						oMainCamera.oTransform.translate(0.25f, 0.0f, 0.0f);
+						oMainCamera.update();
 						break;
 
 					default:
@@ -123,18 +144,14 @@ int main()
 
 		shader.bind();
 		vao.bind();
+		oIndexBuffer.bind();
 
 		// draw triangle 1
-		ShaderModifier::setUniform4f(shader.getUniformLocation("u_colour"), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
+		//ShaderModifier::setUniform4f(shader.getUniformLocation("u_colour"), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 		transform.setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 		ShaderModifier::setUniformMat4(shader.getUniformLocation("u_modelMatrix"), transform.getModelMatrix());
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-		
-		// draw triangle 2
-		ShaderModifier::setUniform4f(shader.getUniformLocation("u_colour"), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
-		transform.setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
-		ShaderModifier::setUniformMat4(shader.getUniformLocation("u_modelMatrix"), transform.getModelMatrix());
-		glDrawArrays(GL_TRIANGLES, 3, 3);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void*)0);
+		//glDrawArrays(GL_TRIANGLES, 0, 3);
 
 		context.swapBuffer();
 	}

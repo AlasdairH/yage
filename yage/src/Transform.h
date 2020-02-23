@@ -19,6 +19,9 @@ namespace YAGE
 		void setRotation(const glm::vec3 &_rotation);
 		void setScale(const glm::vec3 &_scale);
 
+		void translate(const glm::vec3& oTranslation);
+		void translate(const float fX, const float fY, const float fZ);
+
 		glm::vec3 getPosition() { return m_position_vec3; }
 		glm::vec3 getRotation() { return m_rotation_vec3; }
 		glm::vec3 getScale() { return m_scale_vec3; }
