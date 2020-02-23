@@ -12,10 +12,10 @@ namespace YAGE
 	*
 	*	Holds the resource name (which can be changed) and a unqiue ID (which cannot be changed) 
 	*/
-	class ResBase
+	class Resource
 	{
 	public:
-		ResBase();
+		Resource();
 		std::string getTag() { return m_tag; }
 		void setTag(const std::string &_newTag) { m_tag = _newTag; }
 

@@ -1,11 +1,11 @@
 #include "PCH.h"
-#include "ResBase.h"
+#include "Resource.h"
 
 namespace YAGE
 {
-	unsigned int ResBase::m_nextUID = 0;
+	unsigned int Resource::m_nextUID = 0;
 
-	ResBase::ResBase()
+	Resource::Resource()
 	{
 		m_uID = m_nextUID; 
 		++m_nextUID;

@@ -4,7 +4,7 @@
 #include "PCH.h"
 
 // Program
-#include "ResBase.h"
+#include "Resource.h"
 
 namespace YAGE
 {
@@ -17,7 +17,7 @@ namespace YAGE
 	*	as a base class for OpenGL resources. This is so IDs can be retreived when needed
 	*	but not modified outside of the class itself.
 	*/
-	class GL_Base : public ResBase
+	class GL_Base : public Resource
 	{
 	public:
 		inline unsigned int getGlID() { return m_glID; }

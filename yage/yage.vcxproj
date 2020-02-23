@@ -340,7 +340,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="src\Profiler.cpp" />
-    <ClCompile Include="src\ResBase.cpp" />
+    <ClCompile Include="src\Resource.cpp" />
     <ClCompile Include="src\Timer.cpp" />
     <ClCompile Include="src\Transform.cpp" />
     <ClCompile Include="src\Window.cpp" />
@@ -364,7 +364,7 @@
     <ClInclude Include="include\PCH.h" />
     <ClInclude Include="include\GL_Shader.h" />
     <ClInclude Include="include\Profiler.h" />
-    <ClInclude Include="include\ResBase.h" />
+    <ClInclude Include="include\Resource.h" />
     <ClInclude Include="include\Timer.h" />
     <ClInclude Include="include\TraceEvents.h" />
     <ClInclude Include="include\Transform.h" />

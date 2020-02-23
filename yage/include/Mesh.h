@@ -16,7 +16,7 @@ namespace YAGE
 	*	
 	*/
 
-	class Mesh : public ResBase
+	class Mesh : public Resource
 	{
 	public:
 		Mesh();
