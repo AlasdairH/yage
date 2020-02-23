@@ -138,6 +138,17 @@ namespace YAGE
 		m_linked = true;
 		LOG(LOG_DEBUG) << "Shader Program " << m_glID << " successfully linked";
 
+		if (getUniformBlockIndex("uCameraData") != -1)
+		{
+			LOG(LOG_DEBUG) << "Found uCameraData uniform block, starting link";
+			// link the BasicShader Uniform block "u_camera_data" to the binding point
+			linkUniformBlock("uCameraData", SHADER_BINDPOINT_CAMERA_VP);
+		}
+		else
+		{
+			LOG(LOG_DEBUG) << "Unable to find u_camera_data uniform block, assuming not needed";
+		}
+
 		// remove the linked shaders
 		for (const auto &pair : m_attached)
 		{

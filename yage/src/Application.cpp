@@ -14,6 +14,7 @@
 #include "Vertex.h"
 #include "Mesh.h"
 #include "Transform.h"
+#include "Camera.h"
 
 #undef main
 
@@ -32,6 +33,8 @@ int main()
 		return 1;
 	}
 	OpenGLContext context(std::make_shared<Window>(window));
+
+	Camera oMainCamera;
 
 	Mesh meshLeft;
 	meshLeft.setTag("Test Mesh Left");
@@ -60,6 +63,10 @@ int main()
 	
 	VertexArray vao;
 	vao.addBuffer(vbo, Mesh::getLayout());
+
+	oMainCamera.oTransform.setPosition(0, 0, 2);
+	oMainCamera.recalculateProjectionMatrix();
+	oMainCamera.updateCameraUniform();
 
 	glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 

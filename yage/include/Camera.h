@@ -28,7 +28,7 @@ namespace YAGE
 		Camera();
 		~Camera();
 
-		Transform transform;		/**< The transform attribute of the Camera, used for moving it around the world */
+		Transform oTransform;		/**< The transform attribute of the Camera, used for moving it around the world */
 
 		/** @brief Sets the Field of View
 		*	@param _fov The desired Field of View in Radians
@@ -50,6 +50,8 @@ namespace YAGE
 		*/
 		void updateCameraUniform();
 
+		void recalculateProjectionMatrix();
+
 		enum ProjectionMode { PROJECTION_PERSPECTIVE, PROJECTION_ORTHOGRAPHIC };
 
 	protected:
@@ -59,18 +61,17 @@ namespace YAGE
 		*/
 		void cleanViewMatrix();
 
-		ProjectionMode			m_projectionMode = PROJECTION_PERSPECTIVE;	/**< The current projection matrix */
+		ProjectionMode			meProjectionMode	= PROJECTION_PERSPECTIVE;	/**< The current projection matrix */
 
 		float					mfFovRad			=   1.5708f;			/**< The current FoV in radians */
 		float					mfAspect			=	0;					/**< The current Aspect Ratio */
 		int						miViewportWidth		=	1280;				/**< Width of the viewport in pixels */
 		int						miViewportHeight	=	720;				/**< Height of the viewport in pixels */
 
-		glm::vec3				mv3Up				= glm::vec3(0, 1, 0);	/**< The camera up vector */
-		glm::vec3				mv3Front			= glm::vec3(0, 0, -1);	/**< The vector which points forward */
+		glm::vec3				moUp				= glm::vec3(0, 1, 0);	/**< The camera up vector */
+		glm::vec3				moFront				= glm::vec3(0, 0, -1);	/**< The vector which points forward */
 
-		glm::mat4				mmat4PerspectiveProjectionMatrix;			/**< The Perspective Matrix */
-		glm::mat4				mmat4OrthographicProjectionMatrix;			/**< The Orthographic Matrix */
+		glm::mat4				moMat4ProjectionMatrix;						/**< The Perspective Matrix */
 
 		CameraMatrixData		moUniformData;								/**< The struct containing the matrices for the uniform buffer to use */
 

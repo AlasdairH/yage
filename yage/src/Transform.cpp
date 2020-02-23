@@ -19,6 +19,7 @@ namespace YAGE
 		else
 		{
 			m_modelMatrix = m_position_mat4 * m_rotation_mat4 * m_scale_mat4;
+			m_modified = false;
 			return m_modelMatrix;
 		}
 	}
@@ -30,6 +31,11 @@ namespace YAGE
 
 		m_modified = true;
 	}
+	void Transform::setPosition(const float fX, const float fY, const float fZ)
+	{
+		setPosition(glm::vec3(fX, fY, fZ));
+	}
+
 	void Transform::setRotation(const glm::vec3& _rotation)
 	{
 		//m_rotation_vec3 = _rotation;

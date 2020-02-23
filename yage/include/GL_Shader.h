@@ -29,7 +29,7 @@ namespace YAGE
 		bool complete();
 
 		void bind() { glUseProgram(m_glID); }
-		static void unbind();
+		static void unbind() { glUseProgram(0); }
 
 		int getUniformLocation(const std::string& _uniform);
 

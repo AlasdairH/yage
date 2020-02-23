@@ -15,8 +15,13 @@ namespace YAGE
 		glm::mat4 getModelMatrix();
 
 		void setPosition(const glm::vec3 &_position);
+		void setPosition(const float fX, const float fY, const float fZ);
 		void setRotation(const glm::vec3 &_rotation);
 		void setScale(const glm::vec3 &_scale);
+
+		glm::vec3 getPosition() { return m_position_vec3; }
+		glm::vec3 getRotation() { return m_rotation_vec3; }
+		glm::vec3 getScale() { return m_scale_vec3; }
 
 	protected:
 		glm::mat4 m_position_mat4 = glm::mat4(1);

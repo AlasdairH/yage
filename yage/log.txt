@@ -1,29 +1,34 @@
-2019-11-21 20:28:50:DEBUG(Window:13): Starting SDL initilisation
-2019-11-21 20:28:50:DEBUG(Window:21): SDL successfully initialised
-2019-11-21 20:28:50:DEBUG(Window:24): Creating window
-2019-11-21 20:28:51:DEBUG(Window:33): Window created successfully
-2019-11-21 20:28:51:DEBUG(OpenGLContext:12): Starting GLEW initialisation
-2019-11-21 20:28:51:DEBUG(OpenGLContext:22): GLEW successfully initialised
-2019-11-21 20:28:51:DEBUG(OpenGLContext:36): Set SDL_GL settings
-2019-11-21 20:28:51:DEBUG(ResBase:13): Created resource with uID 0
-2019-11-21 20:28:51:DEBUG(ResBase:13): Created resource with uID 1
-2019-11-21 20:28:51:DEBUG(ResBase:13): Created resource with uID 2
-2019-11-21 20:28:51:DEBUG(create:174): Created shader program 1
-2019-11-21 20:28:51:DEBUG(attach:116): Shader 2 with type 35633 successfully attached to program 1
-2019-11-21 20:28:51:DEBUG(attach:116): Shader 3 with type 35632 successfully attached to program 1
-2019-11-21 20:28:51:DEBUG(complete:139): Shader Program 1 successfully linked
-2019-11-21 20:28:51:DEBUG(complete:145): Removed source shader 2
-2019-11-21 20:28:51:DEBUG(complete:145): Removed source shader 3
-2019-11-21 20:28:51:DEBUG(ResBase:13): Created resource with uID 3
-2019-11-21 20:28:51:DEBUG(init:112): Vertex Buffer Object with ID: 1 Created
-2019-11-21 20:28:51:DEBUG(allocate:30): Allocated 216 bytes to vertex buffer Test VBO
-2019-11-21 20:28:51:DEBUG(addToVertexBuffer:23): Added Mesh Test Mesh Left to Vertex Buffer Test VBO with size 108
-2019-11-21 20:28:51:DEBUG(addToVertexBuffer:23): Added Mesh Test Mesh Right to Vertex Buffer Test VBO with size 108
-2019-11-21 20:28:51:DEBUG(ResBase:13): Created resource with uID 4
-2019-11-21 20:28:51:DEBUG(VertexArray:9): Vertex Array Object with ID: 1 Created
-2019-11-21 20:28:51:DEBUG(main:64): Starting main loop
-2019-11-21 20:28:51:DEBUG(getUniformLocation:166): Found shader uniform u_colour at location 0, adding to cache
-2019-11-21 20:28:51:DEBUG(getUniformLocation:166): Found shader uniform u_modelMatrix at location 1, adding to cache
-2019-11-21 20:28:53:DEBUG(main:75): SDL_QUIT event called
-2019-11-21 20:28:53:DEBUG(main:105): Main loop ended
-2019-11-21 20:28:53:MESSAGE(main:109): Debugs: 28 | Warnings: 0 | Errors: 0
+2020-02-23 18:52:39:DEBUG(Window:13): Starting SDL initilisation
+2020-02-23 18:52:39:DEBUG(Window:21): SDL successfully initialised
+2020-02-23 18:52:39:DEBUG(Window:24): Creating window
+2020-02-23 18:52:40:DEBUG(Window:33): Window created successfully
+2020-02-23 18:52:40:DEBUG(OpenGLContext:12): Starting GLEW initialisation
+2020-02-23 18:52:40:DEBUG(OpenGLContext:22): GLEW successfully initialised
+2020-02-23 18:52:40:DEBUG(OpenGLContext:36): Set SDL_GL settings
+2020-02-23 18:52:40:DEBUG(ResBase:13): Created resource with uID 0
+2020-02-23 18:52:40:DEBUG(init:112): Vertex Buffer Object with ID: 1 Created
+2020-02-23 18:52:40:DEBUG(allocate:30): Allocated 192 bytes to vertex buffer Default Tag
+2020-02-23 18:52:40:DEBUG(ResBase:13): Created resource with uID 1
+2020-02-23 18:52:40:DEBUG(ResBase:13): Created resource with uID 2
+2020-02-23 18:52:40:DEBUG(ResBase:13): Created resource with uID 3
+2020-02-23 18:52:40:DEBUG(create:185): Created shader program 1
+2020-02-23 18:52:40:DEBUG(attach:116): Shader 2 with type 35633 successfully attached to program 1
+2020-02-23 18:52:40:DEBUG(attach:116): Shader 3 with type 35632 successfully attached to program 1
+2020-02-23 18:52:40:DEBUG(complete:139): Shader Program 1 successfully linked
+2020-02-23 18:52:40:DEBUG(complete:143): Found uCameraData uniform block, starting link
+2020-02-23 18:52:40:DEBUG(linkUniformBlock:203): Linked shader 1 uniform block uCameraData to binding point 0
+2020-02-23 18:52:40:DEBUG(complete:156): Removed source shader 2
+2020-02-23 18:52:40:DEBUG(complete:156): Removed source shader 3
+2020-02-23 18:52:40:DEBUG(ResBase:13): Created resource with uID 4
+2020-02-23 18:52:40:DEBUG(init:112): Vertex Buffer Object with ID: 2 Created
+2020-02-23 18:52:40:DEBUG(allocate:30): Allocated 216 bytes to vertex buffer Test VBO
+2020-02-23 18:52:40:DEBUG(addToVertexBuffer:23): Added Mesh Test Mesh Left to Vertex Buffer Test VBO with size 108
+2020-02-23 18:52:40:DEBUG(addToVertexBuffer:23): Added Mesh Test Mesh Right to Vertex Buffer Test VBO with size 108
+2020-02-23 18:52:40:DEBUG(ResBase:13): Created resource with uID 5
+2020-02-23 18:52:40:DEBUG(VertexArray:9): Vertex Array Object with ID: 1 Created
+2020-02-23 18:52:40:DEBUG(main:78): Starting main loop
+2020-02-23 18:52:40:DEBUG(getUniformLocation:177): Found shader uniform u_colour at location 0, adding to cache
+2020-02-23 18:52:40:DEBUG(getUniformLocation:177): Found shader uniform u_modelMatrix at location 1, adding to cache
+2020-02-23 18:52:44:DEBUG(main:89): SDL_QUIT event called
+2020-02-23 18:52:44:DEBUG(main:113): Main loop ended
+2020-02-23 18:52:44:MESSAGE(main:119): Debugs: 33 | Warnings: 0 | Errors: 0
