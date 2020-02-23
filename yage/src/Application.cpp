@@ -35,6 +35,7 @@ int main()
 	OpenGLContext context(std::make_shared<Window>(window));
 
 	Camera oMainCamera;
+	oMainCamera.setProjectionMode(Camera::ProjectionMode::PROJECTION_ORTHOGRAPHIC);
 
 	Mesh meshLeft;
 	meshLeft.setTag("Test Mesh Left");
@@ -81,14 +82,37 @@ int main()
 	{
 		c3p::Timer frameTimer("Frame", "scope");
 
-		SDL_Event incomingEvent;
-		while (SDL_PollEvent(&incomingEvent))
+		SDL_Event oIncomingEvent;
+		while (SDL_PollEvent(&oIncomingEvent))
 		{
-			if (incomingEvent.type == SDL_QUIT)
+			if (oIncomingEvent.type == SDL_QUIT)
 			{
 				LOG(LOG_DEBUG) << "SDL_QUIT event called";
 				run = false;
 			}
+
+			switch (oIncomingEvent.type)
+			{
+				case SDL_KEYDOWN:
+					switch (oIncomingEvent.key.keysym.sym)
+					{
+					case SDLK_SPACE:
+						if (oMainCamera.getProjectionMode() == Camera::ProjectionMode::PROJECTION_ORTHOGRAPHIC)
+						{
+							oMainCamera.setProjectionMode(Camera::ProjectionMode::PROJECTION_PERSPECTIVE);
+						}
+						else
+						{
+							oMainCamera.setProjectionMode(Camera::ProjectionMode::PROJECTION_ORTHOGRAPHIC);
+						}
+						oMainCamera.recalculateProjectionMatrix();
+						oMainCamera.updateCameraUniform();
+						LOG(LOG_DEBUG) << "Switching camera projection mode";
+						break;
+					}
+					break;
+			}
+
 		}
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

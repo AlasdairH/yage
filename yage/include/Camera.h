@@ -30,12 +30,17 @@ namespace YAGE
 
 		Transform oTransform;		/**< The transform attribute of the Camera, used for moving it around the world */
 
+		enum ProjectionMode { PROJECTION_PERSPECTIVE, PROJECTION_ORTHOGRAPHIC };
+
 		/** @brief Sets the Field of View
 		*	@param _fov The desired Field of View in Radians
 		*
 		*	Sets the FoV and cleans the projection matrix
 		*/
 		inline void setFOV(const float _fov) { mfFovRad = _fov; cleanViewMatrix(); }
+
+		void setProjectionMode(const ProjectionMode eMode);
+		Camera::ProjectionMode getProjectionMode();
 
 		/** @brief Return the Projection Matrix
 		*	@return The Projection Matrix
@@ -52,7 +57,7 @@ namespace YAGE
 
 		void recalculateProjectionMatrix();
 
-		enum ProjectionMode { PROJECTION_PERSPECTIVE, PROJECTION_ORTHOGRAPHIC };
+		
 
 	protected:
 		/** @brief Sets the updated Projection Matrix

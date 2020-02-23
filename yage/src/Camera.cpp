@@ -36,9 +36,21 @@ namespace YAGE
 		else if (meProjectionMode == PROJECTION_ORTHOGRAPHIC)
 		{
 			float fOrthoHeight = glm::degrees(mfFovRad) / 4;
-			float fOrthoWidth = fOrthoHeight;
-			moMat4ProjectionMatrix = glm::ortho(-(fOrthoWidth / 2), fOrthoWidth / 2, -(fOrthoHeight / 2), fOrthoHeight / 2, 0.0f, 10.0f);
+			float fOrthoWidth = fOrthoHeight * mfAspect;
+			float fDivisor = 10;
+			moMat4ProjectionMatrix = glm::ortho(-(fOrthoWidth / fDivisor), fOrthoWidth / fDivisor, -(fOrthoHeight / fDivisor), fOrthoHeight / fDivisor, 0.0f, 10.0f);
 		}
+	}
+
+	void Camera::setProjectionMode(ProjectionMode eMode)
+	{
+		meProjectionMode = eMode;
+		recalculateProjectionMatrix();
+	}
+
+	Camera::ProjectionMode Camera::getProjectionMode()
+	{
+		return meProjectionMode;
 	}
 
 	glm::mat4 Camera::getProjectionMatrix()
