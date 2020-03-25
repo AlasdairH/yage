@@ -3,6 +3,11 @@
 
 namespace YAGE
 {
+	void ShaderModifier::setUniform1i(const int& _location, const int iValue)
+	{
+		glUniform1i(_location, iValue);
+	}
+
 	void ShaderModifier::setUniform4f(const int& _location, const glm::vec4& _value)
 	{
 		glUniform4f(_location, _value.x, _value.y, _value.z, _value.w);

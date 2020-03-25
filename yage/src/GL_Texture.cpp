@@ -15,7 +15,7 @@ namespace YAGE
 
 	Texture::~Texture()
 	{
-
+		glDeleteTextures(1, &muiGLID);
 	}
 
 	bool Texture::fromFile(const std::string& sFilePath)
@@ -40,10 +40,12 @@ namespace YAGE
 
 		if (mpucData != nullptr)
 		{
+			LOG(LOG_DEBUG) << "Creating texture from file";
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, miWidth, miHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, mpucData);
 		}
 		else
 		{
+			LOG(LOG_DEBUG) << "Creating blank texture";
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, miWidth, miHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, (void*)0);
 		}
 		glGenerateMipmap(GL_TEXTURE_2D);
@@ -51,12 +53,27 @@ namespace YAGE
 
 	void Texture::bind() const
 	{
-		glBindBuffer(GL_TEXTURE_2D, muiGLID);
+		glBindTexture(GL_TEXTURE_2D, muiGLID);
 	}
 
 	void Texture::unBind()
 	{
-		glBindBuffer(GL_TEXTURE_2D, 0);
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+
+	void Texture::bindToTextureUnit(const unsigned int uiTextureUnit)
+	{
+		if (uiTextureUnit >= GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS || uiTextureUnit < 0)
+		{
+			LOG(LOG_ERROR) << "Texture unit " << uiTextureUnit << " out of range";
+		}
+		else
+		{
+			//unBind();
+
+			glActiveTexture(GL_TEXTURE0 + uiTextureUnit);
+			glBindTexture(GL_TEXTURE_2D, muiGLID);
+		}
 	}
 
 }

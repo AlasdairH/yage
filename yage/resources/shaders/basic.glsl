@@ -30,9 +30,10 @@ void main()
 [[FRAGMENT]]
 #version 430 core
 
-uniform vec4 u_colour = vec4(0.97f, 0.16f, 0.58f, 1.0f);
+layout (binding = 0) uniform sampler2D tDiffuse;
+layout (binding = 1) uniform sampler2D tSpecular;
 
-uniform sampler2D tDiffuse;
+uniform vec4 u_colour = vec4(0.97f, 0.16f, 0.58f, 1.0f);
 
 in vec2 v2TexCoord;
 
@@ -40,6 +41,9 @@ out vec4 fragColour;
 
 void main()
 {
-    fragColour = texture(tDiffuse, v2TexCoord);
-	//fragColour = u_colour;
+    vec4 diffuseColour = texture(tDiffuse, v2TexCoord);
+    vec4 specularColour = texture(tSpecular, v2TexCoord);
+	fragColour = mix(diffuseColour, specularColour, 0.5f);
+	//fragColour = diffuseColour;
+	//fragColour = specularColour;
 }

@@ -35,9 +35,6 @@ int main()
 	}
 	OpenGLContext context(std::make_shared<Window>(window));
 
-	Camera oMainCamera;
-	oMainCamera.setProjectionMode(Camera::ProjectionMode::PROJECTION_ORTHOGRAPHIC);
-
 	Mesh oMeshVertices;
 	oMeshVertices.setTag("Test Mesh Left");
 	oMeshVertices.addVertex({ glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0), glm::vec2(0, 1) });
@@ -66,9 +63,13 @@ int main()
 	VertexArray vao;
 	vao.addBuffer(vbo, Mesh::getLayout());
 
-	Texture oTexture;
-	oTexture.fromFile("face.jpg");
+	Texture oTextureDiffuse;
+	oTextureDiffuse.fromFile("face_diffuse.jpg");
+	Texture oTextureSpecular;
+	oTextureSpecular.fromFile("face_specular.jpg");
 
+	Camera oMainCamera;
+	oMainCamera.setProjectionMode(Camera::ProjectionMode::PROJECTION_ORTHOGRAPHIC);
 	oMainCamera.oTransform.setPosition(0, 0, 2);
 	oMainCamera.update();
 
@@ -137,21 +138,20 @@ int main()
 					}
 					break;
 			}
-
 		}
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+		oTextureDiffuse.bindToTextureUnit(0);
+		oTextureSpecular.bindToTextureUnit(1);
 
 		shader.bind();
 		vao.bind();
 		oIndexBuffer.bind();
 
-		// draw triangle 1
-		//ShaderModifier::setUniform4f(shader.getUniformLocation("u_colour"), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f));
 		transform.setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 		ShaderModifier::setUniformMat4(shader.getUniformLocation("u_modelMatrix"), transform.getModelMatrix());
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void*)0);
-		//glDrawArrays(GL_TRIANGLES, 0, 3);
 
 		context.swapBuffer();
 	}

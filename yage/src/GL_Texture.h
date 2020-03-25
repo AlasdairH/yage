@@ -25,11 +25,13 @@ namespace YAGE
 		void bind() const;
 		static void unBind();
 
+		void bindToTextureUnit(const unsigned int uiTextureUnit);
+
 	protected:
 		void initialize(unsigned char* mpucData);
 
-		int miWidth;
-		int miHeight;
+		int miWidth		= 0;
+		int miHeight	= 0;
 	};
 }
 
