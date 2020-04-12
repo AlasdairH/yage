@@ -69,8 +69,6 @@ namespace YAGE
 		}
 		else
 		{
-			//unBind();
-
 			glActiveTexture(GL_TEXTURE0 + uiTextureUnit);
 			glBindTexture(GL_TEXTURE_2D, muiGLID);
 		}

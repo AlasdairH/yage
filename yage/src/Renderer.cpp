@@ -4,10 +4,9 @@
 
 namespace YAGE
 {
-	void Renderer::renderBatch(SpriteVector& roSprites, VertexArray& roVAO, VertexBuffer& roVBO, VertexBuffer& roIndexBuffer)
+	void Renderer::renderSpriteBatch(SpriteVector& roSprites, VertexArray& roVAO, VertexBuffer& roVBO, VertexBuffer& roIndexBuffer)
 	{
 		unsigned int uiIteration = 0;
-		std::string ibc;
 
 		for (Sprite& roSprite : roSprites)
 		{
@@ -15,11 +14,10 @@ namespace YAGE
 			{
 				LOG(LOG_DEBUG) << "Sending dirty sprite, iteration " << uiIteration;
 				roSprite.modifyInVBO(roVBO);
-
 				
 				for (int i = 0; i < 6; ++i)
 				{
-					moIndexBufferMemCache[(uiIteration * 6) + i] = Sprite::iIndicies[i] + (uiIteration * 6);
+					moIndexBufferCache[(uiIteration * 6) + i] = Sprite::iIndicies[i] + (uiIteration * 4);
 				}
 			}
 
@@ -28,7 +26,7 @@ namespace YAGE
 			++uiIteration;
 		}
 
-		roIndexBuffer.loadData(moIndexBufferMemCache.data(), uiIteration * 6 * sizeof(unsigned int));
+		roIndexBuffer.loadData(moIndexBufferCache.data(), uiIteration * 6 * sizeof(unsigned int));
 
 		roVAO.bind();
 		roIndexBuffer.bind();
@@ -36,6 +34,6 @@ namespace YAGE
 		Transform oTransform;
 		oTransform.setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 		
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void*)0);
+		glDrawElements(GL_TRIANGLES, 12, GL_UNSIGNED_INT, (void*)0);
 	}
 }

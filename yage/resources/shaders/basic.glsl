@@ -11,10 +11,12 @@ layout (std140) uniform uCameraData
 layout (location = 0) in vec3 buffer_position;
 layout (location = 1) in vec3 buffer_normal;
 layout (location = 2) in vec2 buffer_textureCoordinates;
+layout (location = 3) in float buffer_textureUnit;
 
 uniform mat4 u_modelMatrix;
 
 out vec2 v2TexCoord;
+out float fTextureUnit;
 
 void main()
 {
@@ -23,6 +25,7 @@ void main()
 	mat4 VP = projectionMatrix * viewMatrix;
 
 	v2TexCoord = buffer_textureCoordinates;
+	fTextureUnit = buffer_textureUnit;
 
     gl_Position = VP * vertPosition;
 }
@@ -30,20 +33,19 @@ void main()
 [[FRAGMENT]]
 #version 430 core
 
-layout (binding = 0) uniform sampler2D tDiffuse;
-layout (binding = 1) uniform sampler2D tSpecular;
-
-uniform vec4 u_colour = vec4(0.97f, 0.16f, 0.58f, 1.0f);
+layout (binding = 0) uniform sampler2D tTextures[2];
 
 in vec2 v2TexCoord;
+in float fTextureUnit;
 
 out vec4 fragColour;
 
 void main()
 {
-    vec4 diffuseColour = texture(tDiffuse, v2TexCoord);
-    vec4 specularColour = texture(tSpecular, v2TexCoord);
-	fragColour = mix(diffuseColour, specularColour, 0.5f);
-	//fragColour = diffuseColour;
-	//fragColour = specularColour;
+	int iTexIndex = int(fTextureUnit);
+    vec4 diffuseColour = texture(tTextures[iTexIndex], v2TexCoord);
+	
+	fragColour = diffuseColour;
+	
+	//fragColour = vec4(v2TexCoord, 0.0f, 1.0f);
 }

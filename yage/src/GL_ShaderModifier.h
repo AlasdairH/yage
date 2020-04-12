@@ -12,6 +12,7 @@ namespace YAGE
 	{
 	public:
 		static void setUniform1i(const int &_location, const int iValue);
+		static void setUniform1iv(const int &_location, const int iCount, const int iValue[]);
 
 		static void setUniform4f(const int &_location, const glm::vec4 &_value);
 

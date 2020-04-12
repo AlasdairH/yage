@@ -37,16 +37,16 @@ int main()
 		return 1;
 	}
 	OpenGLContext context(std::make_shared<Window>(window));
-
 	
 	SpriteVector sprites;
-	sprites.push_back(Sprite());
+	sprites.push_back(Sprite(0));
+	sprites.push_back(Sprite(1));
 
-	unsigned int uiIndices[] = { 0, 1, 2, 2, 3, 0 };
+	sprites[0].translate(-3, -0.5f, 0);
+	sprites[1].translate( 2, -0.5f, 0);
 
 	VertexBuffer oIndexBuffer(BUFFER_ELEMENT_ARRAY);
-	oIndexBuffer.allocate(sizeof(unsigned int) * 6);
-	//oIndexBuffer.loadData(&uiIndices[0], sizeof(unsigned int) * 6);
+	oIndexBuffer.allocate(sizeof(unsigned int) * 12);
 
 	Transform transform;
 
@@ -57,16 +57,21 @@ int main()
 
 	VertexBuffer vbo(BUFFER_ARRAY);
 	vbo.setTag("Batch VBO 1");
-	vbo.allocate(sizeof(Vertex) * 6);
-	//testSprite.addToVBO(vbo);
+	vbo.allocate(sizeof(Vertex) * 12);
+	for (Sprite& oSprite : sprites)
+	{
+		oSprite.addToVBO(vbo);
+	}
 	
 	VertexArray vao;
 	vao.addBuffer(vbo, Mesh::getLayout());
 
 	Texture oTextureDiffuse;
-	oTextureDiffuse.fromFile("face_diffuse.jpg");
+	oTextureDiffuse.fromFile("1.jpg");
+	oTextureDiffuse.setTag("Texture_Diffse");
 	Texture oTextureSpecular;
-	oTextureSpecular.fromFile("face_specular.jpg");
+	oTextureSpecular.fromFile("2.jpg");
+	oTextureSpecular.setTag("Texture_Specular");
 
 	Camera oMainCamera;
 	oMainCamera.setProjectionMode(Camera::ProjectionMode::PROJECTION_ORTHOGRAPHIC);
@@ -133,6 +138,9 @@ int main()
 						oMainCamera.update();
 						break;
 
+					case SDLK_t:
+						sprites[0].translate(0.25f, 0, 0);
+
 					default:
 						LOG(LOG_DEBUG) << "Unmapped key pressed";
 					}
@@ -144,12 +152,14 @@ int main()
 
 		oTextureDiffuse.bindToTextureUnit(0);
 		oTextureSpecular.bindToTextureUnit(1);
+		int iTextures[2] = { 0, 1 };
 
 		shader.bind();
 		ShaderModifier::setUniformMat4(shader.getUniformLocation("u_modelMatrix"), transform.getModelMatrix());
+		ShaderModifier::setUniform1iv(shader.getUniformLocation("tTextures"), 2, iTextures);
 		
 		Renderer batchRenderer;
-		batchRenderer.renderBatch(sprites, vao, vbo, oIndexBuffer);
+		batchRenderer.renderSpriteBatch(sprites, vao, vbo, oIndexBuffer);
 
 		context.swapBuffer();
 	}

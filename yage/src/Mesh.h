@@ -23,14 +23,18 @@ namespace YAGE
 
 		void addVertex(const Vertex &_vertex);
 
-		unsigned int addToVertexBuffer(VertexBuffer &_buffer);
+		void translate(const glm::vec3& roTranslation);
+		void setPosition(const glm::vec3& roPosition);
+		void setVertexPosition(const int ciIndex, const glm::vec3& roPosition);
 
-		std::vector<Vertex>* getDataPtr() { return &m_vertices; }
+		unsigned int addToVertexBuffer(VertexBuffer &roBuffer);
+
+		std::vector<Vertex>* getDataPtr() { return &moVertices; }
 
 		static VertexBufferLayout getLayout();
 
 	protected:
-		std::vector<Vertex> m_vertices;
+		std::vector<Vertex> moVertices;
 
 		std::shared_ptr<VertexBuffer> poGraphicsContainer;
 		unsigned int muiOffset = 0;

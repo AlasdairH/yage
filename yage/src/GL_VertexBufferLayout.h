@@ -30,6 +30,7 @@ namespace YAGE
 		{
 			switch (_type)
 			{
+				case GL_INT: return sizeof(int);
 				case GL_FLOAT: return sizeof(float);
 				case GL_UNSIGNED_INT: return sizeof(unsigned int);
 				case GL_UNSIGNED_BYTE: return sizeof(unsigned char);
@@ -61,6 +62,13 @@ namespace YAGE
 		void push(unsigned int _count)
 		{
 			static_assert(false);
+		}
+
+		template<>
+		void push<int>(unsigned int _count)
+		{
+			m_elements.push_back({ GL_INT, _count, GL_FALSE });
+			m_stride += VertexBufferElement::getSizeOfType(GL_INT) * _count;
 		}
 		/** @brief Pushes a new float element to the layout
 		*	@param _count The number of values in the element. Eg, 3 for a vec3 (3 floats), 2 for a vec2 (2 floats).

@@ -16,10 +16,10 @@ namespace YAGE
 	class Renderer
 	{
 	public:
-		void renderBatch(SpriteVector& roSprites, VertexArray& roVAO, VertexBuffer& roVBO, VertexBuffer& roIndexBuffer);
+		void renderSpriteBatch(SpriteVector& roSprites, VertexArray& roVAO, VertexBuffer& roVBO, VertexBuffer& roIndexBuffer);
 
 	protected:
-		std::array<int, 6 * 10000> moIndexBufferMemCache;
+		std::array<int, 6 * 10000> moIndexBufferCache;
 	};
 
 }

@@ -7,25 +7,10 @@ namespace YAGE
 	{
 		m_targetWindow = _window;
 
-		m_openGLContext = SDL_GL_CreateContext(m_targetWindow->getSDLWindow());
-
-		LOG(LOG_DEBUG) << "Starting GLEW initialisation";
-		//glewExperimental = GL_TRUE;
-
-		GLenum err = glewInit();
-		if (GLEW_OK != err)
-		{
-			LOG(LOG_ERROR) << "GLEW failed to initialise ";
-			return;
-		}
-
-		LOG(LOG_DEBUG) << "GLEW successfully initialised";
-
+		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 		// set OpenGL 4.3
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 3);
-
-		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 
 		// set attributes
 		SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24);
@@ -34,6 +19,15 @@ namespace YAGE
 		SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 1);
 
 		LOG(LOG_DEBUG) << "Set SDL_GL settings";
+
+		m_openGLContext = SDL_GL_CreateContext(m_targetWindow->getSDLWindow());
+
+		GLenum err = glewInit();
+		if (GLEW_OK != err)
+		{
+			LOG(LOG_ERROR) << "GLEW failed to initialise";
+			assert(false);
+		}
 	}
 
 	OpenGLContext::~OpenGLContext()
