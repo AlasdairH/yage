@@ -11,17 +11,19 @@ namespace YAGE
 	void Mesh::addVertex(const Vertex &_vertex)
 	{
 		m_vertices.push_back(std::move(_vertex));
-		m_size = sizeof(Vertex) * (int)m_vertices.size();
+		muiSize = sizeof(Vertex) * (int)m_vertices.size();
 	}
 
-	void Mesh::addToVertexBuffer(VertexBuffer &_buffer)
+	unsigned int Mesh::addToVertexBuffer(VertexBuffer &_buffer)
 	{
-		m_size = sizeof(Vertex) * (int)m_vertices.size();
-		m_graphicsContainer = std::make_shared<VertexBuffer>(_buffer);
-		m_offset = _buffer.addData(m_vertices.data(), m_size);
+		muiSize = sizeof(Vertex) * (int)m_vertices.size();
+		muiOffset = _buffer.addData(m_vertices.data(), muiSize);
 
-		LOG(LOG_DEBUG) << "Added Mesh " << m_tag << " to Vertex Buffer " << _buffer.getTag() << " with size " << m_size;
+		LOG(LOG_DEBUG) << "Added Mesh " << msTag << " to Vertex Buffer " << _buffer.getTag() << " with size " << muiSize;
+
+		return muiOffset;
 	}
+
 	VertexBufferLayout Mesh::getLayout()
 	{
 		VertexBufferLayout layout;

@@ -121,6 +121,8 @@ namespace YAGE
 		*/
 		void bindBase(unsigned int _base, unsigned int _index);
 
+		inline unsigned int getBufferSize() { return m_bufferSize; }
+
 	protected:
 		/** @brief
 		*

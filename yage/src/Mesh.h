@@ -23,16 +23,18 @@ namespace YAGE
 
 		void addVertex(const Vertex &_vertex);
 
-		void addToVertexBuffer(VertexBuffer &_buffer);
+		unsigned int addToVertexBuffer(VertexBuffer &_buffer);
+
+		std::vector<Vertex>* getDataPtr() { return &m_vertices; }
 
 		static VertexBufferLayout getLayout();
 
 	protected:
 		std::vector<Vertex> m_vertices;
 
-		std::shared_ptr<VertexBuffer> m_graphicsContainer;
-		unsigned int m_offset = 0;
-		unsigned int m_size = 0;
+		std::shared_ptr<VertexBuffer> poGraphicsContainer;
+		unsigned int muiOffset = 0;
+		unsigned int muiSize = 0;
 	};
 
 }

@@ -1,4 +1,5 @@
 // stl
+#include <vector>
 
 // external
 
@@ -16,6 +17,8 @@
 #include "Mesh.h"
 #include "Transform.h"
 #include "Camera.h"
+#include "Sprite.h"
+#include "Renderer.h"
 
 #undef main
 
@@ -35,18 +38,15 @@ int main()
 	}
 	OpenGLContext context(std::make_shared<Window>(window));
 
-	Mesh oMeshVertices;
-	oMeshVertices.setTag("Test Mesh Left");
-	oMeshVertices.addVertex({ glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0), glm::vec2(0, 1) });
-	oMeshVertices.addVertex({ glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0), glm::vec2(1, 1) });
-	oMeshVertices.addVertex({ glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(0), glm::vec2(1, 0) });
-	oMeshVertices.addVertex({ glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0), glm::vec2(0, 0) });
+	
+	SpriteVector sprites;
+	sprites.push_back(Sprite());
 
 	unsigned int uiIndices[] = { 0, 1, 2, 2, 3, 0 };
 
 	VertexBuffer oIndexBuffer(BUFFER_ELEMENT_ARRAY);
 	oIndexBuffer.allocate(sizeof(unsigned int) * 6);
-	oIndexBuffer.loadData(&uiIndices[0], sizeof(unsigned int) * 6);
+	//oIndexBuffer.loadData(&uiIndices[0], sizeof(unsigned int) * 6);
 
 	Transform transform;
 
@@ -56,9 +56,9 @@ int main()
 	shader.complete();
 
 	VertexBuffer vbo(BUFFER_ARRAY);
-	vbo.setTag("Test VBO");
+	vbo.setTag("Batch VBO 1");
 	vbo.allocate(sizeof(Vertex) * 6);
-	oMeshVertices.addToVertexBuffer(vbo);
+	//testSprite.addToVBO(vbo);
 	
 	VertexArray vao;
 	vao.addBuffer(vbo, Mesh::getLayout());
@@ -146,12 +146,10 @@ int main()
 		oTextureSpecular.bindToTextureUnit(1);
 
 		shader.bind();
-		vao.bind();
-		oIndexBuffer.bind();
-
-		transform.setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
 		ShaderModifier::setUniformMat4(shader.getUniformLocation("u_modelMatrix"), transform.getModelMatrix());
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, (void*)0);
+		
+		Renderer batchRenderer;
+		batchRenderer.renderBatch(sprites, vao, vbo, oIndexBuffer);
 
 		context.swapBuffer();
 	}
